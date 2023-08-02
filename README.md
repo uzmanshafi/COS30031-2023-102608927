@@ -15,6 +15,8 @@ Hi :wave:, I am Shafi Uzman Fassy - 102608927 and you can contact me here -> [Em
 
 > Link To Resources :
 
-*NONE AT THE MOMENT*
+[C++ Cheet Sheet](https://www.codewithharry.com/blogpost/cpp-cheatsheet/)
+[VS CODE Key ShortCuts](https://gist.github.com/cleary/d168e301429c0305c49d97907796c72d)
+[C++ IDE Online Debugger](https://www.onlinegdb.com/)
 
 
