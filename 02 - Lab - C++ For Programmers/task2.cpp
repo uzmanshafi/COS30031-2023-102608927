@@ -5,7 +5,7 @@ using namespace std;
 // 1. created a function that takes two values and prints them. 
 void PrintTwoValues(int a, int b)
 {
-    cout << a << " " << b << endl;
+    cout << "Int 1 : " << a  << " " << "Int 2 : " << b << endl;
 }
 
 int main()
