@@ -15,6 +15,15 @@ int AlterValue(int a)
     return a;
 }
 
+//3. declare a pointer to a variable and demonstrate the setting and reading of the value in the variable using the pointer
+void demoPointer()
+{
+    int a = 3;
+    int *ptr = &a;
+    cout << "Original Value of a : " << a << endl;
+    cout << "Value of a using pointer : " << *ptr << endl;
+}
+
 int main()
 {
     //1.
@@ -24,6 +33,9 @@ int main()
     int a = 4;
     int alteredValue = AlterValue(a);
     cout << "Altered Value : " << alteredValue << endl;
+
+    //3. 
+    demoPointer();
 
     return 0;
 }
