@@ -51,6 +51,22 @@ void PrintArray()
     cout << endl;
 }
 
+//6. created a function that splits the line of text such as "this has spaces in it"
+void PrintSplitTextbySpaces(string text)
+{
+    cout << "Split text: ";
+    size_t startpos = 0;
+    size_t endpos = text.find(" ");
+    while (endpos != string::npos)
+    {
+        cout << text.substr(startpos, endpos - startpos) << endl;
+        startpos = endpos + 1;
+        endpos = text.find(" ", startpos);
+    }
+    cout << text.substr(startpos) << endl;
+    
+}
+
 
 int main()
 {
@@ -70,6 +86,9 @@ int main()
 
     //5.
     PrintArray();
+
+    //6.
+    PrintSplitTextbySpaces("this has spaces in it");
 
     return 0;
 }
