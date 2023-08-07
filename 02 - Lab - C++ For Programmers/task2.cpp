@@ -27,6 +27,7 @@ void demoPointer()
 //4. Create a function that uses a for loop to print all odd numbers between 0 and 20 on a single text line of text output, formatted with spaces. Call this from main.
 void PrintOddNumbers()
 {
+    cout << "Odd Numbers : ";
     for (int i = 0; i < 20; i++)
     {
         if (i % 2 != 0)
@@ -34,6 +35,20 @@ void PrintOddNumbers()
             cout << i << " ";
         }
     }
+    cout << endl;
+}
+
+//5. created a function that creates a 1 dimensional array of 5 integers, then fills the array with random int values, prints the contents of the arrat.
+void PrintArray()
+{
+    cout << "Array : ";
+    int arr[5];
+    for (int i = 0; i < 5; i++)
+    {
+        arr[i] = rand() % 100;
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 
@@ -52,6 +67,9 @@ int main()
 
     //4.
     PrintOddNumbers();
+
+    //5.
+    PrintArray();
 
     return 0;
 }
