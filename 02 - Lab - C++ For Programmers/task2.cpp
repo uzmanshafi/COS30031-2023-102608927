@@ -24,6 +24,19 @@ void demoPointer()
     cout << "Value of a using pointer : " << *ptr << endl;
 }
 
+//4. Create a function that uses a for loop to print all odd numbers between 0 and 20 on a single text line of text output, formatted with spaces. Call this from main.
+void PrintOddNumbers()
+{
+    for (int i = 0; i < 20; i++)
+    {
+        if (i % 2 != 0)
+        {
+            cout << i << " ";
+        }
+    }
+}
+
+
 int main()
 {
     //1.
@@ -36,6 +49,9 @@ int main()
 
     //3. 
     demoPointer();
+
+    //4.
+    PrintOddNumbers();
 
     return 0;
 }
