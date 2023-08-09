@@ -111,13 +111,14 @@ int main()
 
         if (grid[playerPosition.x][playerPosition.y] == GOLD)
         {
+            cout << "Wow - you’ve discovered a large chest filled with GOLD coins!" << endl;
+            cout << "YOU WIN!" << endl;
             isPlayerWon = true;
             isGameOver = true;
         }
         else if (grid[playerPosition.x][playerPosition.y] == DEATH)
         {
-            cout << "Wow - you’ve discovered a large chest filled with GOLD coins!" << endl;
-            cout << "YOU WIN!" << endl;
+            
             cout << "Arrrrgh... you’ve fallen down a pit." << endl;
             cout << "YOU HAVE DIED!" << endl;
             isPlayerWon = false;
