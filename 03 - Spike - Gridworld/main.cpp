@@ -42,6 +42,9 @@ int main()
 {
     displayWelcomeMessage();
 
+    bool isGameOver = false;
+    bool isPlayerWon = false;
+    char user_cmd;
     //create grid
     char grid[Grid_Size][Grid_Size] = {
         {'#', 'G', ' ', 'D', '#', 'D', ' ', ' '},
