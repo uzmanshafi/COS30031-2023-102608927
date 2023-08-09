@@ -11,6 +11,13 @@ const char START = 'S';
 const char GOLD = 'G';
 const char DEATH = 'D';
 
+//structure to be used to hold plauers position
+struct PlayerPostion
+{
+    char x;
+    char y;
+};
+
 void displayWelcomeMessage()
 {
     cout << "Welcome to the Gridworld: Quantised Excitement. Fate is waiting for You!" << endl;
