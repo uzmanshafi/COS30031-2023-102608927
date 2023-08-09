@@ -18,6 +18,19 @@ struct PlayerPostion
     char y;
 };
 
+void displayGrid(const char grid[Grid_Size][Grid_Size], const PlayerPostion& playerPosition) {
+    for (int x = 0; x < Grid_Size; ++x) {
+        for (int y = 0; y < Grid_Size; ++y) {
+            if (x == playerPosition.x && y == playerPosition.y) {
+                cout << 'P'; // Display the player's position
+            } else {
+                cout << grid[x][y];
+            }
+        }
+        cout << endl;
+    }
+}
+
 void displayWelcomeMessage()
 {
     cout << "Welcome to the Gridworld: Quantised Excitement. Fate is waiting for You!" << endl;
@@ -28,4 +41,18 @@ void displayWelcomeMessage()
 int main()
 {
     displayWelcomeMessage();
+
+    //create grid
+    char grid[Grid_Size][Grid_Size] = {
+        {'#', 'G', ' ', 'D', '#', 'D', ' ', ' '},
+        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        {'#', '#', '#', ' ', ' ', ' ', 'D', ' '},
+        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        {'#', ' ', '#', '#', '#', '#', ' ', ' '},
+        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        {'#', '#', 'S', '#', '#', '#', '#', '#'}
+    };
+
+    PlayerPostion playerPosition = {8, 2};
 }
