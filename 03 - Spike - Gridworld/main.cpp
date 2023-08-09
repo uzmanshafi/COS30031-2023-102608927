@@ -125,4 +125,11 @@ int main()
             isGameOver = true;
         }
     }
+
+    if (isPlayerWon)
+    {
+        cout << "Thanks for playing. Maybe next time." << endl;
+    } else {
+        cout << "Thanks for playing. There probably won’t be a next time." << endl;
+    }
 }
