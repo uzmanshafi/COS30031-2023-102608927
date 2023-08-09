@@ -53,14 +53,15 @@ int main()
 
     // create grid
     char grid[Grid_Size][Grid_Size] = {
-        {'#', 'G', ' ', 'D', '#', 'D', ' ', ' '},
-        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-        {'#', '#', '#', ' ', ' ', ' ', 'D', ' '},
-        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-        {'#', ' ', '#', '#', '#', '#', ' ', ' '},
-        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-        {'#', '#', 'S', '#', '#', '#', '#', '#'}};
+    {'#', '#', '#', '#', '#', '#', '#', '#'},
+    {'#', 'G', ' ', 'D', '#', 'D', ' ', '#'},
+    {'#', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+    {'#', '#', '#', ' ', ' ', '#', ' ', '#'},
+    {'#', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+    {'#', ' ', '#', '#', '#', ' ', ' ', '#'},
+    {'#', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+    {'#', '#', 'S', '#', '#', '#', '#', '#'}
+};
 
     PlayerPostion playerPosition = {8, 2};
 
@@ -111,7 +112,7 @@ int main()
 
         if (grid[playerPosition.x][playerPosition.y] == GOLD)
         {
-            cout << "Wow - you’ve discovered a large chest filled with GOLD coins!" << endl;
+            cout << "Wow - you have discovered a large chest filled with GOLD coins!" << endl;
             cout << "YOU WIN!" << endl;
             isPlayerWon = true;
             isGameOver = true;
