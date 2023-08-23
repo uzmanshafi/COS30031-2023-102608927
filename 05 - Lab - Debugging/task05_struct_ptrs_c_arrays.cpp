@@ -81,7 +81,7 @@ void showParticleArray_2(Particle arr[], int size);
 int main()
 {
     // 1. Warm up. Create a particle, set values, show to screen
-    if (true) {
+    if (false) {
         cout << " << Section 1 >>" << endl;
         Particle a;
         // #TODO: Q.5 un-initialised values ... what this show and why?
