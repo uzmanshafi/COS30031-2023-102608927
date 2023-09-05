@@ -282,7 +282,7 @@ int main()
     // 7. Array of pointers to structs
     if (false) {
         cout << " << Section 7 >>" << endl;
-        int n = 5;
+        const int n = 5;
         Particle *ptr_array[n]; // contains pointers to nowhere so far!
         cout << "Array of pointers - warmup checks:" << endl;
         cout << "The (direct/root?) ptr_array value " << ptr_array << endl;
