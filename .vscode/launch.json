@@ -5,13 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         
-        
-
         {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/a.exe",
+            "program": "enter program name, for example ${workspaceFolder}/a.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -32,8 +30,6 @@
                 }
             ]
         }
-
-
 
     ]
 }

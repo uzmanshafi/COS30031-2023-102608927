@@ -49,65 +49,65 @@ Updates
  2020-07-05: Cleanup, new questions and comment help.
 
 *******************************************************************************/
-#include <iostream>
+        #include <iostream>
 
-using namespace std;
+        using namespace std;
 
-// #TODO: Q.1 What is the difference between a struct and a class?
-struct Particle
-{
-    unsigned int age;
-    int x;
-    int y;
-};
+        // #TODO: Q.1 What is the difference between a struct and a class?
+        struct Particle
+        {
+            unsigned int age;
+            int x;
+            int y;
+        };
 
-// #TODO: Q.2 What are function declarations?
-// Tip: Define, but explain *why* or *if* they are needed.
-void showParticle(Particle);
+        // #TODO: Q.2 What are function declarations?
+        // Tip: Define, but explain *why* or *if* they are needed.
+        void showParticle(Particle);
 
-// #TODO: Q.3 Why are variable names not needed here?
-// Extra: Could you add variable names? Would that be good?
-Particle getParticleWith(int, int, int);
+        // #TODO: Q.3 Why are variable names not needed here?
+        // Extra: Could you add variable names? Would that be good?
+        Particle getParticleWith(int, int, int);
 
-void setParticleWith(Particle, int, int, int);
+        void setParticleWith(Particle, int, int, int);
 
-void showParticleArray(Particle *, int);
+        void showParticleArray(Particle *, int);
 
-// #TODO: Q.4 Does your IDE know if this method is used?
-// If yes - how does it indicate this? (Colour? Tip? Other?)
-void showParticleArray_2(Particle arr[], int size);
+        // #TODO: Q.4 Does your IDE know if this method is used?
+        // If yes - how does it indicate this? (Colour? Tip? Other?)
+        void showParticleArray_2(Particle arr[], int size);
 
-// Main loop. Stuff happens here ...
-int main()
-{
-    // 1. Warm up. Create a particle, set values, show to screen
-    if (false) {
-        cout << " << Section 1 >>" << endl;
-        Particle a;
-        // #TODO: Q.5 un-initialised values ... what this show and why?
-        // Note: your IDE might be warning or making a note - if so note that
-        // in your answer.
-        cout << "Q.5: a with uninitialised values ? ... ";
-        showParticle(a);
-        a.age = 0;
-        a.x = 10;
-        a.y = 20;
-        cout << "Q.6: a with assigned values 0,10,20 ? ... ";
-        showParticle(a); // #TODO: Q.6 Did this work as expected?
+        // Main loop. Stuff happens here ...
+        int main()
+        {
+            // 1. Warm up. Create a particle, set values, show to screen
+            if (true) {
+                cout << " << Section 1 >>" << endl;
+                Particle a = {0,0,0};
+                // #TODO: Q.5 un-initialised values ... what this show and why?
+                // Note: your IDE might be warning or making a note - if so note that
+                // in your answer.
+                cout << "Q.5: a with uninitialised values ? ... ";
+                showParticle(a);
+                a.age = 0;
+                a.x = 10;
+                a.y = 20;
+                cout << "Q.6: a with assigned values 0,10,20 ? ... ";
+                showParticle(a); // #TODO: Q.6 Did this work as expected?
 
-        // #TODO: Q.7 Initialisation list - do you know what are they?
-        // Quicker then setting each part of the particle as above!
-        // Do you know about them? If not, find out and make extra notes in your report.
-        // Yes this is a simple question! :)
-        // Your IDE might help suggest what the values are
-        Particle b = {0,0,0};
-        cout << "Q.7: b with initialised values 0,0,0 ? ... ";
-        showParticle(b);
-    }
+                // #TODO: Q.7 Initialisation list - do you know what are they?
+                // Quicker then setting each part of the particle as above!
+                // Do you know about them? If not, find out and make extra notes in your report.
+                // Yes this is a simple question! :)
+                // Your IDE might help suggest what the values are
+                Particle b = {0,0,0};
+                cout << "Q.7: b with initialised values 0,0,0 ? ... ";
+                showParticle(b);
+            }
 
     // 2. Get a particle with the values we pass to the function
     //    (When you are up to this section, change false to true. Keeps things compact)
-    if (false) {
+    if (true) {
         cout << " << Section 2 >>" << endl;
         Particle p1 = getParticleWith(1,2,3);
         cout << "Q.8: p1 with 1,2,3 ? ... ";
