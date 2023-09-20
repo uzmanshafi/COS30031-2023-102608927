@@ -221,15 +221,15 @@ Updates
         // Tip: Note the output values shown. Consider if they make sense.
         // Extra: You might see some values that we set earlier. Does that make sense?
         cout << "Q.25: Array position overrun ... " << endl;
-        showParticleArray(p_array2, 10); // <-- change size from 3 to 10
+        showParticleArray(p_array2, 3); // <-- change size from 3 to 10
     }
 
     // 6. Struct pointer with new and delete for memory
-    if (false) {
+    if (true) {
         cout << " << Section 6 >>" << endl;
         // Some pointer warm-up ideas. What you expect?
         cout << "Q.26: Warm up concept checks ... " << endl;
-        Particle *p1_ptr; // points to nothing - does it?
+        Particle *p1_ptr = nullptr; // points to nothing - does it?
         cout << " - pointer address (does it?): " << hex << p1_ptr << endl;
         Particle p1 = {9,9,9}; // a real and initialised Particle variable
         cout << " - pointer address of p1:" << hex << &p1 << endl;
@@ -253,9 +253,9 @@ Updates
         // #TODO: Q.28 What is delete and what did it do?
 
         cout << "Q.29 Can we still show value at pointer address? (It was deleted, so ...) " << endl;
-        cout << " - pointer address " << hex << p1_ptr << endl;
+        //cout << " - pointer address " << hex << p1_ptr << endl;
         // #TODO: Q.29 What happens when we try this? Explain.
-        showParticle((*p1_ptr));
+        //showParticle((*p1_ptr));
 
         cout << "Q.30 nullptr vs NULL vs 0 ... for pointers." << endl;
         // house keeping - if a pointer isn't valid, set it to nullptr/NULL
@@ -269,7 +269,7 @@ Updates
         // NOTE: There is a difference between "run" and "debug" in most IDEs
         // NOTE: If you do a simple run (not a debug) with the IDE, you should
         // normally get a "process finished with exit code 0" message at the end.
-        // If the value given is NOT "0", the program stopped with an error code!
+        // If the value given is NOT "0", the progrSam stopped with an error code!
         // Make sure you know if this is the case. Run the program binary directly
         // from a terminal to confirm if there is an issue.
         // Debug will tell you *lot* more!
@@ -280,7 +280,7 @@ Updates
 
 
     // 7. Array of pointers to structs
-    if (false) {
+    if (true) {
         cout << " << Section 7 >>" << endl;
         const int n = 5;
         Particle *ptr_array[n]; // contains pointers to nowhere so far!
