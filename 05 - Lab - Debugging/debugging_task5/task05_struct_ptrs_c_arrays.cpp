@@ -120,7 +120,7 @@ Updates
     }
 
     // 3. Set values in a particle that we already have
-    if (false) {
+    if (true) {
         cout << " << Section 3 >>" << endl;
         // This compiles/runs, but ...
         Particle p1 = {1,1,1};
@@ -131,7 +131,7 @@ Updates
     }
 
     // 4. Use a pointer to an existing particle
-    if (false) {
+    if (true) {
         cout << " << Section 4 >>" << endl;
         Particle *p1_ptr;
         // set b to be something sensible
@@ -176,7 +176,7 @@ Updates
     // #TODO: Q.17 Is p1 still available? Explain.
 
     // 5. Array of structs
-    if (false) {
+    if (true) {
         cout << " << Section 5 >>" << endl;
         // #TODO: Q.18 <deleted - ignore> :)
 
@@ -221,7 +221,7 @@ Updates
         // Tip: Note the output values shown. Consider if they make sense.
         // Extra: You might see some values that we set earlier. Does that make sense?
         cout << "Q.25: Array position overrun ... " << endl;
-        showParticleArray(p_array2, 3); // <-- change size from 3 to 10
+        showParticleArray(p_array2, 10); // <-- change size from 3 to 10
     }
 
     // 6. Struct pointer with new and delete for memory
@@ -380,14 +380,14 @@ void showParticleArray_2(Particle arr[], int size)
 
     // #TODO: Q.24 Uncomment the following. It gives different values to those we saw before
     //  So it won't work as a way to determine array size - but why?
-    /*
+    
      if (true) {
          cout << "Array as arr[] ..." << endl;
          cout << " - sizeof entire array? " << sizeof(arr) << endl;
          cout << " - sizeof array element? " << sizeof(arr) << endl;
          cout << " - array size n is: " << (sizeof(arr) / sizeof(arr[0])) << endl;
      }
-     */
+     
     // NOTE: The above might get warnings (good!). Not all compilers/IDEs though.
     // Extra: Make a note about what is giving you warnings if you know.
 
