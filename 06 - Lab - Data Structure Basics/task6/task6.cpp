@@ -107,7 +107,7 @@ int main() {
     array_demo_2();
     // #TODO: Q.2 In array_demo_2, explain what a4(a1) does
 
-    //array_demo_3();
+    array_demo_3();
     // #TODO: Q.3 No questions for array_demo_3, it's just a demo of Struct/Class use with array.
 
     //stack_demo();
