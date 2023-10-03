@@ -117,7 +117,7 @@ int main() {
     queue_demo();
     // #TODO: Q.6 What is the difference between a stack.pop() and a queue.pop() ?
 
-    //list_demo();
+    list_demo();
     // #TODO: Q.7 Can we access a list value using and int index? Explain.
     // #TODO: Q.8 Is there a reason to use a list instead of a vector?
 
