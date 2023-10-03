@@ -114,7 +114,7 @@ int main() {
     // #TODO: Q.4 How do we (what methods) add and remove items to a stack?
     // #TODO: Q.5 A stack has no no [] or at() method - why?
 
-    //queue_demo();
+    queue_demo();
     // #TODO: Q.6 What is the difference between a stack.pop() and a queue.pop() ?
 
     //list_demo();
