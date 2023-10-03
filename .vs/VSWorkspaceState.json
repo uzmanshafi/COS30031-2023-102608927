@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\05 - Lab - Debugging",
+    "\\05 - Lab - Debugging\\debugging_task5",
+    "\\06 - Lab - Data Structure Basics",
+    "\\06 - Lab - Data Structure Basics\\task6"
   ],
-  "SelectedNode": "\\task6.sln",
+  "SelectedNode": "\\06 - Lab - Data Structure Basics\\task6\\task6.sln",
   "PreviewInSolutionExplorer": false
 }
