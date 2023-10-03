@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\05 - Lab - Debugging",
-    "\\05 - Lab - Debugging\\debugging_task5",
-    "\\06 - Lab - Data Structure Basics",
-    "\\06 - Lab - Data Structure Basics\\task6"
+    "\\07 - Spike - Performance Measurement",
+    "\\07 - Spike - Performance Measurement\\Task7App",
+    "\\Task 7"
   ],
-  "SelectedNode": "\\06 - Lab - Data Structure Basics\\task6\\task6.sln",
+  "SelectedNode": "\\07 - Spike - Performance Measurement\\Task7App\\Task7App.sln",
   "PreviewInSolutionExplorer": false
 }
