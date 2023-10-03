@@ -110,7 +110,7 @@ int main() {
     array_demo_3();
     // #TODO: Q.3 No questions for array_demo_3, it's just a demo of Struct/Class use with array.
 
-    //stack_demo();
+    stack_demo();
     // #TODO: Q.4 How do we (what methods) add and remove items to a stack?
     // #TODO: Q.5 A stack has no no [] or at() method - why?
 
