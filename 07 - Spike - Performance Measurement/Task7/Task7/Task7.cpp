@@ -48,8 +48,8 @@ void exponential_rampup_test()
         cout << ", time/int: " << diff.count() / size << "s/int" << endl;
 
         // TIP: time in nanoseconds? Cast result of chrono::duration.count() ...
-        // auto _dur = duration_cast<nanoseconds>( end - start ).count();
-        // cout << _dur << endl;
+        auto _dur = duration_cast<nanoseconds>( end - start ).count();
+        cout << _dur << endl;
     }
     cout << "done." << endl;
 }
@@ -81,6 +81,8 @@ void linear_rampup_test()
 
 int main()
 {
+
+
     // Simple wrapper around a linaer set of time tests
     linear_rampup_test();
 
