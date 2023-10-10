@@ -1,112 +1,85 @@
 #include <iostream>
 #include <vector>
-#include <numeric>
-#include <algorithm>
 #include <chrono>
 
 using namespace std;
 using namespace std::chrono;
 
+class ParticleClassA {
+public:
+    int x, y;
+    ParticleClassA() { x = 0; y = 0; };
+    void show() { cout << "(" << x << ", " << y << ")" << endl; }
+};
 
-// - count char using slow repeated string::find_first_of
-int count_char_using_find_first_of(string s, char delim)
+class ParticleClassB {
+private:
+    int _x, _y;
+public:
+    void do_stuff(int value) { _y = value + _x; }
+    ParticleClassB() { _x = 0; _y = 0; };
+    void show() { cout << "(" << _x << ", " << _y << ")" << endl; }
+};
+
+void exp_rampup_test(int steps)
 {
-    int count = 0;
-    // note: string::size_type pos = s.find_first_of(delim);
-    auto pos = s.find_first_of(delim);
-    while ((pos = s.find_first_of(delim, pos)) != string::npos)
-    {
-        count++;
-        pos++;
-    }
-    return count;
-}
-
-// - count char using fast std::count
-int count_char_using_count(string s, char delim)
-{
-    return count(s.begin(), s.end(), delim);
-}
-
-
-void exponential_rampup_test()
-{
-    cout << " << Exponential Ramp-up Test >> " << endl;
-    int total;
-    // ull (suffix) == "unsigned long long" in c
-    for (auto size = 1ull; size < 1000000000ull; size *= 100)
+    cout << " << Particle Ramp-up Test >> " << endl;
+    unsigned int size = 1;
+    for (auto step = 1; step <= steps; step++)
     {
         // 1. get start time
         auto start = steady_clock::now();
-        // 2. do some work (create, fill, find sum)
-        vector<int> v(size, 42);
-        total = accumulate(v.begin(), v.end(), 0u);
+        // 2. do some work 
+        vector<ParticleClassA> v(size);
+        // ... do other stuff here on all the particles (in loop)?
         // 3. show duration time
         auto end = steady_clock::now();
-        duration<double> diff = end - start;
-        cout << " - size: " << size << ", time: " << diff.count() << " s";
-        cout << ", time/int: " << diff.count() / size << "s/int" << endl;
+        auto _dur = duration_cast<nanoseconds>(end - start).count();
+        cout << " - size: " << size << ", time: " << _dur << " ns";
+        cout << " (ns/count): " << _dur / size << endl;
 
-        // TIP: time in nanoseconds? Cast result of chrono::duration.count() ...
-        auto _dur = duration_cast<nanoseconds>( end - start ).count();
-        cout << _dur << endl;
+        size = size * 10;
     }
     cout << "done." << endl;
 }
 
-void linear_rampup_test()
+void exp_rampdown_test(int steps, bool do_more)
 {
-    cout << " << Linear Ramp-up Test >> " << endl;
-    int total;
-    for (auto size = 1; size <= 5; size += 1)
+    cout << " << Particle Ramp-down Test >> " << endl;
+    // Find top exponent size value, so we can work down. 
+    // No in-built int power() for C++/std, so ... roll our own.
+    unsigned int size = 1;
+    for (int i = 1; i < steps; i++) size = size * 10;
+
+    // Do the test of vector creation, work on vector objects ...
+    for (auto step = steps; step > 0; step--)
     {
-        int vec_size = size * 10000;
         // 1. get start time
         auto start = steady_clock::now();
-        // 2. do some work (create, fill, find sum)
-        vector<int> v(vec_size, 42);
-        // std::accumulate (from <numeric>) collects from begin, to end
-        // - in this case (default) it is the sum total of all the values in v
-        total = accumulate(v.begin(), v.end(), 0u);
+        // 2. do some work 
+        vector<ParticleClassA> v(size);
+        // if (do_more) 
+        // {
+        //     for (auto &p: v) 
+        //     {
+        //         p.do_stuff(step);
+        //     }
+        // }
         // 3. show duration time
         auto end = steady_clock::now();
-        duration<double> diff = end - start;
-        cout << " - size: " << vec_size << ", time: " << diff.count() << " s";
-        cout << ", time/int: " << diff.count() / vec_size << "s/int" << endl;
+        auto _dur = duration_cast<nanoseconds>(end - start).count();
+        cout << " - size: " << size << ", time: " << _dur << " ns";
+        cout << " (ns/count): " << _dur / size << endl;
+        // work down (by factors of 10 ...)
+        size = size / 10;
     }
     cout << "done." << endl;
 }
-
-
 
 int main()
 {
-    // Simple wrapper around a linaer set of time tests
-    linear_rampup_test();
-
-    // Simple wrapper around an exponential set of time tests
-    exponential_rampup_test();
-
-    // Compare the two different methods of counting in a string
-    // - show result in nanoseconds?
-    string s1 = "This is a really simple string but it will do for testing.";
-
-    // Timing for count_char_using_find_first_of
-    auto start1 = steady_clock::now();
-    int result1 = count_char_using_find_first_of(s1, 's');
-    auto end1 = steady_clock::now();
-    duration<double> diff1 = end1 - start1;
-    cout << "count_char_using_find_first_of time: " << diff1.count() << " s" << endl;
-    cout << "result: " << result1 << endl;
-
-    // Timing for count_char_using_count
-    auto start2 = steady_clock::now();
-    int result2 = count_char_using_count(s1, 's');
-    auto end2 = steady_clock::now();
-    duration<double> diff2 = end2 - start2;
-    cout << "count_char_using_count time: " << diff2.count() << " s" << endl;
-    cout << "result: " << result2 << endl;
-
-
+    exp_rampup_test(5);
+    exp_rampdown_test(5, false);
+    exp_rampdown_test(5, true);
 }
 

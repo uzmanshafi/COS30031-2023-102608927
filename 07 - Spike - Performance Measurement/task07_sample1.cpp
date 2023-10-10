@@ -90,12 +90,22 @@ int main()
     // Compare the two different methods of counting in a string
     // - show result in nanoseconds?
     string s1 = "This is a really simple string but it will do for testing.";
-    int result;
-    result = count_char_using_find_first_of(s1, 's');
-    cout << "result: " << result << endl;    
 
-    result = count_char_using_count(s1, 's');
-    cout << "result: " << result << endl;    
+    // Timing for count_char_using_find_first_of
+    auto start1 = steady_clock::now();
+    int result1 = count_char_using_find_first_of(s1, 's');
+    auto end1 = steady_clock::now();
+    duration<double> diff1 = end1 - start1;
+    cout << "count_char_using_find_first_of time: " << diff1.count() << " s" << endl;
+    cout << "result: " << result1 << endl;
+
+    // Timing for count_char_using_count
+    auto start2 = steady_clock::now();
+    int result2 = count_char_using_count(s1, 's');
+    auto end2 = steady_clock::now();
+    duration<double> diff2 = end2 - start2;
+    cout << "count_char_using_count time: " << diff2.count() << " s" << endl;
+    cout << "result: " << result2 << endl;
     
 
 }
