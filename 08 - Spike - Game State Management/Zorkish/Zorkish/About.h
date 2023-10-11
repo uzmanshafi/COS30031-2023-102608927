@@ -1,5 +1,9 @@
 #pragma once
-class About
-{
-};
+#include "State.h"
 
+class About : public State {
+public:
+    void enter() override;
+    void handleInput(int input) override;
+    void exit() override;
+};

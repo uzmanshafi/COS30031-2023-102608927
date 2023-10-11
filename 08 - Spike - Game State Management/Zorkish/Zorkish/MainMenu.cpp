@@ -1,5 +1,9 @@
-// MainMenu.cpp
+#include "StateManager.h"
 #include "MainMenu.h"
+#include "About.h"
+#include "SelectAdventure.h"
+#include "ViewHallOfFame.h"
+#include "Help.h"
 #include <iostream>
 
 void MainMenu::enter() {
@@ -15,9 +19,32 @@ void MainMenu::enter() {
 }
 
 void MainMenu::handleInput(int input) {
-    // I need to implement the logic to handle the input.
+    switch (input) {
+    case 1:
+        StateManager::getInstance()->changeState(new SelectAdventure());
+
+        break;
+    case 2:
+        StateManager::getInstance()->changeState(new ViewHallOfFame());
+
+        break;
+    case 3:
+        StateManager::getInstance()->changeState(new Help());
+
+        break;
+    case 4:
+        StateManager::getInstance()->changeState(new About());
+
+        break;
+    case 5:
+        exit();
+        break;
+    default:
+        std::cout << "Invalid selection. Please select 1-5: ";
+        break;
+    }
 }
 
 void MainMenu::exit() {
-    std::cout << "Exiting Main Menu...\n";
+    std::cout << "Exiting game. Thank you for playing!\n";
 }
