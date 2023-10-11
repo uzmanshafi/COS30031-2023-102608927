@@ -127,7 +127,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="About.cpp" />
+    <ClCompile Include="Gameplay.cpp" />
+    <ClCompile Include="Help.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="NewHighscore.cpp" />
+    <ClCompile Include="SelectAdventure.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="ViewHallOfFame.cpp" />
     <ClCompile Include="Zorkish.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="About.h" />
+    <ClInclude Include="Gameplay.h" />
+    <ClInclude Include="Help.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="NewHighscore.h" />
+    <ClInclude Include="SelectAdventure.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateManager.h" />
+    <ClInclude Include="ViewHallOfFame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
