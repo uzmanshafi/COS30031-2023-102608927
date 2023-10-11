@@ -69,3 +69,4 @@ out/
 
 # add others as you go ...
 *.opendb
+*.vs
