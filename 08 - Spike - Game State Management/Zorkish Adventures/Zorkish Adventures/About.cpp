@@ -11,10 +11,11 @@ void About::enter() {
 }
 
 void About::handleInput(int input) {
-    // Assumes 'input' is the ASCII value of the entered character
-    if (input == '\n') {
-        StateManager::getInstance()->changeState(new MainMenu());
-    }
+    char c;
+    std::cin.get(c);  // Captures the 'Enter' key press
+    StateManager::getInstance()->changeState(new MainMenu());
 }
 
-void About::exit() {}
+void About::exit() {
+    std::cout << "Exiting About...\n";
+}
