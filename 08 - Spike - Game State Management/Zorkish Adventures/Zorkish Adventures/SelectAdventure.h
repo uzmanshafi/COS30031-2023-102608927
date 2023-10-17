@@ -1,5 +1,9 @@
 #pragma once
-class SelectAdventure
-{
-};
+#include "State.h"
 
+class SelectAdventure : public State {
+public:
+    void enter() override;
+    void exit() override;
+    void handleInput(int input) override;
+};
