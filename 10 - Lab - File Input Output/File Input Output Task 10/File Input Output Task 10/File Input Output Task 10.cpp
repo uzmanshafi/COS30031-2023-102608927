@@ -1,5 +1,6 @@
 #include "Data.h"
 #include <iostream>
+#include <fstream>
 
 int main() {
     Data myData;
@@ -14,6 +15,14 @@ int main() {
     }
 
     printData(myData);
+
+    void saveToFile(const Data& data, const string& filename) {
+        ofstream file(filename, ios::binary);
+        file.write((char*)&data, sizeof(data));
+        file.close();
+    }
+
+    saveToFile(myData, "test1.bin");
 
 }
 
