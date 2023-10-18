@@ -1,21 +1,16 @@
 {
-    "locations": [
-      {
-        "name": "forest",
+    "forest": {
         "description": "A dense, green forest with birds chirping.",
         "connections": {
-          "north": "cave",
-          "south": "river",
-          "east": "mountain"
+            "north": "cave",
+            "south": "river",
+            "east": "mountain"
         }
-      },
-      {
-        "name": "cave",
+    },
+    "cave": {
         "description": "A dark, damp cave.",
         "connections": {
-          "south": "forest"
+            "south": "forest"
         }
-      }
-    ]
-  }
-  
+    }
+}
