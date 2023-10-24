@@ -1,0 +1,75 @@
+{
+	"locations":
+	[
+		{
+			"name":"Mountain World",
+			"desc":"peak of the highest mountain valley",
+			"connections":
+			[
+				{
+					"direction":"north",
+					"name":"Rock Town"
+				},
+				{
+					"direction":"left",
+					"name":"Rock Road"
+				}
+			],		
+			"inventory":
+			[
+				{
+					"name":"sword",
+					"desc":"iron sword."
+				},
+				{
+					"name":"stick",
+					"desc":"fallen crippled stick."
+				}
+			]
+		},
+		{
+			"name":"Water World",
+			"desc":"bit of a swampy world.",
+			"connections":
+			[
+				{
+					"direction":"up",
+					"name":"River Camp"
+				}
+			],	
+			"inventory":
+			[
+				{
+					"name":"rabbit",
+					"desc":"rare red eyed rabbit."
+				},
+				{
+					"name":"burnt stick",
+					"desc":"burnt recently."
+				}
+			]
+		},
+		{
+			"name":"Box World",
+			"desc":"a boxy world.",
+			"connections":
+			[
+				{
+					"direction":"west",
+					"name":"dark forest"
+				}
+			],	
+			"inventory":
+			[
+				{
+					"name":"mushrooms",
+					"desc":"trippy mushrooms."
+				},
+				{
+					"name":"glowstone",
+					"desc":"werid glowy rock."
+				}
+			]
+		}
+	]
+}
