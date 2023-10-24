@@ -9,7 +9,7 @@ class GameManager;
 class State
 {
 protected:
-	GameManager* _manager = nullptr;
+	GameManager *_manager = nullptr;
 	char _command;
 
 	virtual void processInput()
@@ -18,7 +18,6 @@ protected:
 		cin.clear();
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	};
-
 
 public:
 	virtual void update() = 0;
