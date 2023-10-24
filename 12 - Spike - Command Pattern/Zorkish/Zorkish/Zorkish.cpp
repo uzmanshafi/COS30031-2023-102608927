@@ -9,7 +9,7 @@ int main() {
 
     while (true) {
         manager->handleInput();
-        // For later phases.
+        
     }
 
     delete manager;

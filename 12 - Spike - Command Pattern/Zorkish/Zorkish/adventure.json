@@ -1,0 +1,37 @@
+{
+  "adventure_name": "Zorkish Adventure",
+  "locations": [
+    {
+      "name": "Mountain Base",
+      "description": "You stand at the base of a tall, snow-capped mountain. A trail winds its way up to the peak.",
+      "entities": [
+        "a backpack",
+        "a signpost"
+      ]
+    },
+    {
+      "name": "Mountain Peak",
+      "description": "You have reached the peak of the mountain. The view from here is breathtaking. To the north, you see a dense forest.",
+      "entities": [
+        "a flag",
+        "a telescope"
+      ]
+    },
+    {
+      "name": "Dense Forest",
+      "description": "Tall, dark trees surround you. The sounds of wildlife echo all around. There's a path that leads deeper into the woods.",
+      "entities": [
+        "a broken compass",
+        "a squirrel"
+      ]
+    },
+    {
+      "name": "Forest Clearing",
+      "description": "You come across a clearing in the forest. In the center is a calm, serene pond reflecting the clear sky.",
+      "entities": [
+        "a pond",
+        "a campfire site"
+      ]
+    }
+  ]
+}
