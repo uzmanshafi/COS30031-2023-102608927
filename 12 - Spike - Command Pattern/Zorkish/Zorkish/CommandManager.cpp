@@ -1,4 +1,5 @@
 #include "CommandManager.h"
+#include "AliasCommand.h" 
 #include <string>
 #include <iostream>
 
@@ -7,8 +8,11 @@ void CommandManager::registerCommand(const std::string& name, Command* command) 
 }
 
 void CommandManager::executeCommand(const std::string& name) {
-    if (commands.find(name) != commands.end()) {
-        commands[name]->execute();
+    // Resolves if the input is an alias
+    std::string resolvedCommand = AliasCommand::resolveAlias(name);
+
+    if (commands.find(resolvedCommand) != commands.end()) {
+        commands[resolvedCommand]->execute();
     }
     else {
         // Command not found logic
