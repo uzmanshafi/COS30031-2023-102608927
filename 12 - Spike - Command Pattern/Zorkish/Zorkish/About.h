@@ -1,10 +1,15 @@
 #pragma once
+
+#include "GameStateManager.h"
 #include "State.h"
 
 class About : public State {
+private:
+    GameStateManager* manager;
+
 public:
-    void initialize() override;
-    void run() override;
-    void terminate() override;
-    void handleInput() override;
+    About(GameStateManager* mgr);
+    void enter() override;
+    void update() override;
+    void exit() override;
 };

@@ -1,58 +1,36 @@
 #include "Gameplay.h"
-#include "StateManager.h"
 #include "MainMenu.h"
-#include "ViewHallOfFame.h"
+#include "HighScore.h"
 #include <iostream>
 #include <string>
-#include "json.hpp"
-#include "CommandManager.h"
 
-using json = nlohmann::json;
+Gameplay::Gameplay(GameStateManager* mgr) : manager(mgr) {}
 
-void Gameplay::initialize() {
-    if (locations.empty()) {
-        std::cout << "No locations to display." << std::endl;
-        return;
-    }
-    currentLocationIndex = 0;
-    std::cout << locations[currentLocationIndex].getName() << std::endl;
-    std::cout << locations[currentLocationIndex].getDescription() << std::endl;
+void Gameplay::enter() {
+    std::cout << "Welcome to Zorkish: Void World\n";
+    std::cout << "This world is simple and pointless. Used it to test Zorkish phase 1 spec.\n";
     std::cout << ":> ";
 }
 
-Gameplay::Gameplay() {
-    currentLocationIndex = 0;
-}
+void Gameplay::update() {
+    std::string command;
+    std::getline(std::cin, command);
 
-Gameplay::Gameplay(const std::vector<Location>& locs) : locations(locs) {}
-
-void Gameplay::run() {
-    while (true) {
-        handleInput();
+    if (command == "quit") {
+        std::cout << "Your adventure has ended without fame or fortune.\n";
+        manager->setGameState(new MainMenu(manager)); // transitions to Main Menu
+    }
+    else if (command == "hiscore") {
+        std::cout << "You have entered the magic word and will now see the “New High Score” screen.\n";
+        // Transitions to the New High Score screen here
+        manager->setGameState(new HighScore(manager));
+    }
+    else {
+        std::cout << "Invalid command. Try 'quit' or 'hiscore'.\n";
+        std::cout << ":> ";
     }
 }
 
-void Gameplay::handleInput() {
-    std::string command;
-    std::getline(std::cin, command);
-    CommandManager* cmdManager = CommandManager::getInstance();
-    cmdManager->executeCommand(command);
-}
-
-void Gameplay::moveToNextLocation() {
-    currentLocationIndex = (currentLocationIndex + 1) % locations.size();
-    std::cout << locations[currentLocationIndex].getName() << std::endl;
-    std::cout << locations[currentLocationIndex].getDescription() << std::endl;
-}
-
-std::string Gameplay::getCurrentLocationName() {
-    return locations[currentLocationIndex].getName();
-}
-
-std::string Gameplay::getCurrentLocationDescription() {
-    return locations[currentLocationIndex].getDescription();
-}
-
-void Gameplay::terminate() {
-    std::cout << "Exiting Gameplay...\n";
+void Gameplay::exit() {
+    // Cleanup or reset any gameplay data here if necessary
 }

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{03f4f9fe-71c7-4966-adc1-20c7452c4576}</ProjectGuid>
+    <ProjectGuid>{91fe3178-9ae7-4837-a4be-e5080fd84b50}</ProjectGuid>
     <RootNamespace>Zorkish</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -128,50 +128,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
-    <ClCompile Include="AliasCommand.cpp" />
-    <ClCompile Include="Command.cpp" />
-    <ClCompile Include="CommandManager.cpp" />
-    <ClCompile Include="DebugTreeCommand.cpp" />
     <ClCompile Include="Gameplay.cpp" />
-    <ClCompile Include="GameWorldLoader.cpp" />
-    <ClCompile Include="GoCommand.cpp" />
+    <ClCompile Include="GameStateManager.cpp" />
+    <ClCompile Include="HallOfFame.cpp" />
     <ClCompile Include="Help.cpp" />
-    <ClCompile Include="HelpCommand.cpp" />
-    <ClCompile Include="InventoryCommand.cpp" />
-    <ClCompile Include="Location.cpp" />
-    <ClCompile Include="LookCommand.cpp" />
+    <ClCompile Include="HighScore.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="NewHighScore.cpp" />
     <ClCompile Include="SelectAdventure.cpp" />
     <ClCompile Include="State.cpp" />
-    <ClCompile Include="StateManager.cpp" />
-    <ClCompile Include="ViewHallOfFame.cpp" />
     <ClCompile Include="Zorkish.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="About.h" />
-    <ClInclude Include="AliasCommand.h" />
-    <ClInclude Include="Command.h" />
-    <ClInclude Include="CommandManager.h" />
-    <ClInclude Include="DebugTreeCommand.h" />
     <ClInclude Include="Gameplay.h" />
-    <ClInclude Include="GameWorldLoader.h" />
-    <ClInclude Include="GoCommand.h" />
+    <ClInclude Include="GameStateManager.h" />
+    <ClInclude Include="HallOfFame.h" />
     <ClInclude Include="Help.h" />
-    <ClInclude Include="HelpCommand.h" />
-    <ClInclude Include="InventoryCommand.h" />
-    <ClInclude Include="json.hpp" />
-    <ClInclude Include="Location.h" />
-    <ClInclude Include="LookCommand.h" />
+    <ClInclude Include="HighScore.h" />
     <ClInclude Include="MainMenu.h" />
-    <ClInclude Include="NewHighScore.h" />
     <ClInclude Include="SelectAdventure.h" />
     <ClInclude Include="State.h" />
-    <ClInclude Include="StateManager.h" />
-    <ClInclude Include="ViewHallOfFame.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="adventure.json" />
+    <None Include="Adventure.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,27 +1,32 @@
 #include "Help.h"
-#include "StateManager.h"
 #include "MainMenu.h"
 #include <iostream>
 
-void Help::initialize() {
-    std::cout << "Zorkish :: Help" << std::endl;
-    std::cout << "--------------------------------------------------------" << std::endl;
-    std::cout << "The following commands are supported:" << std::endl;
-    std::cout << "quit," << std::endl;
-    std::cout << "hiscore (for testing)" << std::endl;
-    std::cout << "Press Enter to return to the Main Menu" << std::endl;
+Help::Help(GameStateManager* mgr) : manager(mgr) {}
+
+void Help::enter() {
+    std::cout << "Zorkish :: Help\n";
+    std::cout << "--------------------------------------------------------\n";
+    std::cout << "[go] _, (or just n, ne, e, etc)\n";
+    std::cout << "look at _,\n";
+    std::cout << "look in _,\n";
+    std::cout << "inventory,\n";
+    std::cout << "open _[with _],\n";
+    std::cout << "close _,\n";
+    std::cout << "attack _ with _\n";
+    std::cout << "take _[from _]\n";
+    std::cout << "put _ in _\n";
+    std::cout << "drop _\n";
+    std::cout << "quit\n";
+    std::cout << "[up arrow] to repeat last command\n";
+    std::cout << "Press Enter to return to the Main Menu\n";
 }
 
-void Help::run() {}
-
-void Help::handleInput() {
-    char c;
-    std::cin.get(c);  // Captures the 'Enter' key press
-    if (c == '\n') {
-        StateManager::getInstance()->changeState(new MainMenu());
-    }
+void Help::update() {
+    std::cin.get();
+    manager->setGameState(new MainMenu(manager));
 }
 
-void Help::terminate() {
-    std::cout << "Exiting Help...\n";
+void Help::exit() {
+
 }

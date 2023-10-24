@@ -3,12 +3,12 @@
 #include "GameStateManager.h"
 #include "State.h"
 
-class SelectAdventure : public State {
+class HallOfFame : public State {
 private:
     GameStateManager* manager;
 
 public:
-    SelectAdventure(GameStateManager* mgr);
+    HallOfFame(GameStateManager* mgr);
     void enter() override;
     void update() override;
     void exit() override;

@@ -1,27 +1,21 @@
 #include "About.h"
-#include "StateManager.h"
 #include "MainMenu.h"
 #include <iostream>
 
-void About::initialize() {
-    std::cout << "Zorkish :: About" << std::endl;
-    std::cout << "--------------------------------------------------------" << std::endl;
-    std::cout << "Written by: Mohamed Shafi Uzman Fassy 102608927" << std::endl;
-    std::cout << "Press Enter to return to the Main Menu" << std::endl;
+About::About(GameStateManager* mgr) : manager(mgr) {}
+
+void About::enter() {
+    std::cout << "Zorkish :: About\n";
+    std::cout << "--------------------------------------------------------\n";
+    std::cout << "Written by: Mohamed Shafi Uzman\n";
+    std::cout << "Press Enter to return to the Main Menu\n";
 }
 
-void About::run() {
-    //keeping empty for now.
+void About::update() {
+    std::cin.get();
+    manager->setGameState(new MainMenu(manager));
 }
 
-void About::handleInput() {
-    char c;
-    std::cin.get(c);  // Captures the 'Enter' key press
-    if (c == '\n') {
-        StateManager::getInstance()->changeState(new MainMenu());
-    }
-}
+void About::exit() {
 
-void About::terminate() {
-    std::cout << "Exiting About...\n";
 }
