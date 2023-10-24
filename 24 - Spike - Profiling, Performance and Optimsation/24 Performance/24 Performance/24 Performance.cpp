@@ -39,7 +39,7 @@ const int BOX_HEIGHT = 50;
 const int BOX_SPEED = 10;
 const int BOX_COUNT = 100;
 
-const int TEST_TIME = 3 * 1000; // ie, 3*1000 = 3 seconds
+const int TEST_TIME = 10 * 1000; // ie, 3*1000 = 3 seconds
 
 enum BoxState { CONTACT_NO, CONTACT_YES };
 
@@ -371,7 +371,7 @@ int run_test(const char* title, void (*function_ptr)()) {
 		update_boxes();
 
 		// RENDER
-		if (true) {
+		if (false) {
 			// 1. clear the background
 			SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255);
 			SDL_RenderClear(renderer);
