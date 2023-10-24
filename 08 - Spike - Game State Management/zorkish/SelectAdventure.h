@@ -4,11 +4,11 @@
 #include "Gameplay.h"
 #include <iostream>
 
-class LevelSelect : public State
+class SelectAdventure : public State
 {
 public:
-	LevelSelect(GameManager*);
-	~LevelSelect();
+	SelectAdventure(GameManager*);
+	~SelectAdventure();
 
 	void update();
 	void render();

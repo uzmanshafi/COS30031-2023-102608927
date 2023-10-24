@@ -9,6 +9,8 @@ Help::~Help()
 {
 }
 
+
+
 void Help::update()
 {
 	processInput();
@@ -17,6 +19,10 @@ void Help::update()
 	{
 	case '1':
 		_manager->pop_state();
+		break;
+	case '\n':
+		_manager->pop_state();
+		break;
 	default:
 		cout << "Invalid input." << endl;
 	}
@@ -24,13 +30,11 @@ void Help::update()
 
 void Help::render()
 {
-	cout << endl
-		<< "The following commands are supported:" << endl
-		<< "quit," << endl
-		<< "hiscore (Testing)" << endl
-		<< endl
-		<< "1. Main Menu"
-		<< endl
-		<< "Select 1:" << endl
-		<< ">> ";
+	std::cout << "Zorkish :: Help\n";
+	std::cout << "------------------------\n";
+	std::cout << "The following commands are supported:\n";
+	std::cout << "quit\n";
+	std::cout << "hiscore\n";
+	std::cout << "Press Twice Enter to go back.\n";
+
 }

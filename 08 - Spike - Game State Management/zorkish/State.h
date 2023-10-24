@@ -14,10 +14,11 @@ protected:
 
 	virtual void processInput()
 	{
-		cin >> _command;
+		_command = cin.get();
 		cin.clear();
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	};
+
 
 public:
 	virtual void update() = 0;

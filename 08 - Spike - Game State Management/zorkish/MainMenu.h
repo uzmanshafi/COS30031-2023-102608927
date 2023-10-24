@@ -4,8 +4,8 @@
 #include "About.h"
 #include "HallOfFame.h"
 #include "Help.h"
-#include "LevelSelect.h"
-#include "Quit.h"
+#include "SelectAdventure.h"
+#include "Exit.h"
 #include <iostream>
 
 class MainMenu : public State

@@ -27,7 +27,7 @@ void Gameplay::update()
 	else if (_command == "hiscore")
 	{
 		_manager->pop_state();
-		_manager->push_state(new Score(_manager));
+		_manager->push_state(new Highscore(_manager));
 	}
 	else
 		cout << "Invalid input." << endl;
@@ -35,10 +35,8 @@ void Gameplay::update()
 
 void Gameplay::render()
 {
-	cout
-		<< "------------------------" << endl
-		<< "This game is in early access." << endl
-		<< "To continue playing, please donate $199.99 to the following PayPal address" << endl
-		<< "acmetonto@hotmail.com" << endl
-		<< ">> ";
+	std::cout << "Welcome to Zorkish :: Void World\n";
+	std::cout << "------------------------\n";
+	std::cout << "This world is simple and pointless. Used it to test Zorkish phase 1 spec.\n";
+	std::cout << ":> ";
 }

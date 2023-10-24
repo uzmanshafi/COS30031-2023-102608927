@@ -11,7 +11,6 @@ int main()
     {
         manager->current()->render();
         manager->current()->update();
-
     }
 
     return 0;

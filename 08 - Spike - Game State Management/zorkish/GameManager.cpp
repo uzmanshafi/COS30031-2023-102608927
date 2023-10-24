@@ -28,5 +28,10 @@ void GameManager::push_state(State* state)
 
 void GameManager::pop_state()
 {
-    _states.pop();
+    if (!_states.empty())
+    {
+        delete _states.top();
+        _states.pop();
+    }
 }
+

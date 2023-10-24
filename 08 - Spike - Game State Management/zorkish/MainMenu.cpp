@@ -18,7 +18,7 @@ void MainMenu::update()
 	switch (_command)
 	{
 	case '1':
-		_manager->push_state(new LevelSelect(_manager));
+		_manager->push_state(new SelectAdventure(_manager));
 		break;
 	case '2':
 		_manager->push_state(new HallOfFame(_manager));
@@ -30,7 +30,7 @@ void MainMenu::update()
 		_manager->push_state(new About(_manager));
 		break;
 	case '5':
-		_manager->push_state(new Quit(_manager));
+		_manager->push_state(new Exit(_manager));
 		break;
 	default:
 		cout << "Invalid input." << endl;
@@ -39,16 +39,12 @@ void MainMenu::update()
 
 void MainMenu::render()
 {
-	cout
-		<< "=============================" << endl
-		<< "Welcome to Zorkish Adventures" << endl
-		<< "=============================" << endl
-		<< endl
-		<< "1. Select Adventure and Play" << endl
-		<< "2. Hall of Fame" << endl
-		<< "3. Help" << endl
-		<< "4. About" << endl
-		<< "5. Quit" << endl
-		<< "Select 1-5:" << endl
-		<< ">> ";
+	std::cout << "Zorkish :: Main Menu\n";
+	std::cout << "------------------------\n";
+	std::cout << "1. Select Adventure and Play\n";
+	std::cout << "2. Hall of Fame\n";
+	std::cout << "3. Help\n";
+	std::cout << "4. About\n";
+	std::cout << "5. Quit\n";
+	std::cout << "Select 1 - 5 :> ";
 }

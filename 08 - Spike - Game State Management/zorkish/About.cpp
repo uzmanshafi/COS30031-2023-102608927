@@ -25,11 +25,8 @@ void About::update()
 
 void About::render()
 {
-	cout << endl
-		<< "Written by: Mitchell Wright" << endl
-		<< endl
-		<< "1. Main Menu"
-		<< endl
-		<< "Select 1:" << endl
-		<< ">> ";
+	std::cout << "Zorkish :: About\n";
+	std::cout << "------------------------\n";
+	std::cout << "Written by : Mohamed Shafi Uzman Fassy\n";
+	std::cout << "Press Enter to Return to the Main Menu\n";
 }

@@ -1,19 +1,19 @@
 #pragma once
 #include "GameManager.h"
 #include "State.h"
-#include "Quit.h"
-#include "Score.h"
+#include "Exit.h"
+#include "Highscore.h"
 #include <iostream>
 
-class Score : public State
+class Highscore : public State
 {
 private:
 	string _command;
 
 	void processInput();
 public:
-	Score(GameManager*);
-	~Score();
+	Highscore(GameManager*);
+	~Highscore();
 	void update();
 	void render();
 };

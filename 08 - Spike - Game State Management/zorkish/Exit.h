@@ -2,13 +2,13 @@
 #include "GameManager.h"
 #include "State.h"
 
-class Quit : public State
+class Exit : public State
 {
 private:
 
 public:
-	Quit(GameManager*);
-	~Quit();
+	Exit(GameManager*);
+	~Exit();
 
 	void update();
 	void render();

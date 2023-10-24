@@ -132,10 +132,10 @@
     <ClCompile Include="Gameplay.cpp" />
     <ClCompile Include="HallOfFame.cpp" />
     <ClCompile Include="Help.cpp" />
-    <ClCompile Include="LevelSelect.cpp" />
+    <ClCompile Include="SelectAdventure.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="Quit.cpp" />
-    <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Exit.cpp" />
+    <ClCompile Include="HighScore.cpp" />
     <ClCompile Include="zorkish.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,12 +144,11 @@
     <ClInclude Include="Gameplay.h" />
     <ClInclude Include="HallOfFame.h" />
     <ClInclude Include="Help.h" />
-    <ClInclude Include="LevelSelect.h" />
+    <ClInclude Include="SelectAdventure.h" />
     <ClInclude Include="MainMenu.h" />
-    <ClInclude Include="Quit.h" />
-    <ClInclude Include="Score.h" />
+    <ClInclude Include="Exit.h" />
+    <ClInclude Include="Highscore.h" />
     <ClInclude Include="State.h" />
-    <ClInclude Include="STATES.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

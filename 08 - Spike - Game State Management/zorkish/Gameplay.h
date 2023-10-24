@@ -1,8 +1,8 @@
 #pragma once
 #include "GameManager.h"
 #include "State.h"
-#include "Quit.h"
-#include "Score.h"
+#include "Exit.h"
+#include "Highscore.h"
 #include <iostream>
 
 class Gameplay : public State

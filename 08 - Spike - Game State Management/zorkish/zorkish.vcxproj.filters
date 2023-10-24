@@ -30,10 +30,10 @@
     <ClCompile Include="Help.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LevelSelect.cpp">
+    <ClCompile Include="SelectAdventure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Quit.cpp">
+    <ClCompile Include="Exit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HallOfFame.cpp">
@@ -42,7 +42,7 @@
     <ClCompile Include="Gameplay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Score.cpp">
+    <ClCompile Include="HighScore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -51,9 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="STATES.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MainMenu.h">
@@ -65,10 +62,10 @@
     <ClInclude Include="Help.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LevelSelect.h">
+    <ClInclude Include="SelectAdventure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Quit.h">
+    <ClInclude Include="Exit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HallOfFame.h">
@@ -77,7 +74,7 @@
     <ClInclude Include="Gameplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Score.h">
+    <ClInclude Include="Highscore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
