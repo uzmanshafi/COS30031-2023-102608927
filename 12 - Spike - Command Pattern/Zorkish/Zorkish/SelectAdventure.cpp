@@ -51,11 +51,6 @@ void SelectAdventure::loadAdventure(const std::string& filename) {
     // Loads the adventure here
     auto locations = GameWorldLoader::LoadLocations(filename);
 
-    // For now, it just print the loaded locations (for debugging)
-    for (const auto& location : locations) {
-        std::cout << "Loaded Location: " << location.getName() << " - " << location.getDescription() << std::endl;
-    }
-
     // Passes the loaded locations to Gameplay
     StateManager::getInstance()->changeState(new Gameplay(locations));
 }

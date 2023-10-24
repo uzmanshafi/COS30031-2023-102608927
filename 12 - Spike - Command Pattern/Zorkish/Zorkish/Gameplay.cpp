@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "json.hpp"
+#include "CommandManager.h"
 
 using json = nlohmann::json;
 
@@ -19,36 +20,37 @@ void Gameplay::initialize() {
     std::cout << ":> ";
 }
 
-
 Gameplay::Gameplay() {
     currentLocationIndex = 0;
 }
 
 Gameplay::Gameplay(const std::vector<Location>& locs) : locations(locs) {}
 
-void Gameplay::run() {}
+void Gameplay::run() {
+    while (true) {
+        handleInput();
+    }
+}
 
 void Gameplay::handleInput() {
     std::string command;
     std::getline(std::cin, command);
+    CommandManager* cmdManager = CommandManager::getInstance();
+    cmdManager->executeCommand(command);
+}
 
-    if (command == "go") {
-        currentLocationIndex = (currentLocationIndex + 1) % locations.size();
-        std::cout << locations[currentLocationIndex].getName() << std::endl;
-        std::cout << locations[currentLocationIndex].getDescription() << std::endl;
-    }
-    if (command == "quit") {
-        std::cout << "Your adventure has ended without fame or fortune." << std::endl;
-        StateManager::getInstance()->changeState(new MainMenu());
-    }
-    else if (command == "hiscore") {
-        std::cout << "You have entered the magic word and will now see the “New High Score” screen." << std::endl;
-        StateManager::getInstance()->changeState(new ViewHallOfFame());
-    }
-    else {
-        std::cout << "Invalid command. Please enter a valid command." << std::endl;
-        std::cout << ":> ";
-    }
+void Gameplay::moveToNextLocation() {
+    currentLocationIndex = (currentLocationIndex + 1) % locations.size();
+    std::cout << locations[currentLocationIndex].getName() << std::endl;
+    std::cout << locations[currentLocationIndex].getDescription() << std::endl;
+}
+
+std::string Gameplay::getCurrentLocationName() {
+    return locations[currentLocationIndex].getName();
+}
+
+std::string Gameplay::getCurrentLocationDescription() {
+    return locations[currentLocationIndex].getDescription();
 }
 
 void Gameplay::terminate() {

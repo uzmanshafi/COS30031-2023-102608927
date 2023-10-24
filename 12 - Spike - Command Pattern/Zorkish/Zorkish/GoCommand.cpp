@@ -1,7 +1,9 @@
 #include "GoCommand.h"
 #include <iostream>
 
-void GoCommand::execute() {
+GoCommand::GoCommand(Gameplay* gameInstance) : gameplay(gameInstance) {}
 
-    std::cout << "Changed location." << std::endl;
+void GoCommand::execute() {
+    gameplay->moveToNextLocation();
+    std::cout << "Changed location to: " << gameplay->getCurrentLocationName() << std::endl;
 }

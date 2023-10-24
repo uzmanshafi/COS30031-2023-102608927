@@ -3,6 +3,16 @@
 #include <string>
 #include <iostream>
 
+CommandManager* CommandManager::instance = nullptr;
+
+CommandManager* CommandManager::getInstance() {
+    if (!instance) {
+        instance = new CommandManager();
+    }
+    return instance;
+}
+
+
 void CommandManager::registerCommand(const std::string& name, Command* command) {
     commands[name] = command;
 }

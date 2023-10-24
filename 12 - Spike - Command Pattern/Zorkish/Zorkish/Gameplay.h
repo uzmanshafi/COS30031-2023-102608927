@@ -11,6 +11,9 @@ public:
     void handleInput() override;
     Gameplay();
     Gameplay(const std::vector<Location>& locs);
+    void moveToNextLocation();
+    std::string getCurrentLocationName();
+    std::string getCurrentLocationDescription();
 private:
     std::vector<Location> locations;
     int currentLocationIndex;
