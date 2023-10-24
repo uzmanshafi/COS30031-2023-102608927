@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\15 - Lab - SDL2 Concepts",
     "\\15 - Lab - SDL2 Concepts\\SDL2Task15Demo",
-    "\\15 - Lab - SDL2 Concepts\\SDL2Task15Demo\\SDL2Task15Demo"
+    "\\15 - Lab - SDL2 Concepts\\SDL2Task15Demo\\SDL2Task15Demo",
+    "\\22 - Spike - Collisions",
+    "\\22 - Spike - Collisions\\Sprite and Graphics Collision",
+    "\\22 - Spike - Collisions\\Sprite and Graphics Collision\\Sprite and Graphics Task"
   ],
+  "SelectedNode": "\\22 - Spike - Collisions\\Sprite and Graphics Collision\\Sprite and Graphics Task.sln",
   "PreviewInSolutionExplorer": false
 }
