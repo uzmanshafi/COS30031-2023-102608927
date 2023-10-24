@@ -1,0 +1,1 @@
+std::cerr << "Error loading tiles.bmp: " << SDL_GetError() << std::endl;

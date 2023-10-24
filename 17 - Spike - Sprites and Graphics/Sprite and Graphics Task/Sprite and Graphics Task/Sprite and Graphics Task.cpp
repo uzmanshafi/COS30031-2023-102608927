@@ -23,6 +23,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    std::cout << "Loading background.bmp..." << std::endl;
     SDL_Surface* bgSurface = SDL_LoadBMP("background.bmp");
     if (!bgSurface) {
         std::cerr << "Error loading background.bmp: " << SDL_GetError() << std::endl;
@@ -34,6 +35,7 @@ int main(int argc, char* argv[]) {
     SDL_Texture* bgTexture = SDL_CreateTextureFromSurface(renderer, bgSurface);
     SDL_FreeSurface(bgSurface);
 
+    std::cout << "Loading tiles.bmp..." << std::endl;
     SDL_Surface* tilesSurface = SDL_LoadBMP("tiles.bmp");
     if (!tilesSurface) {
         std::cerr << "Error loading tiles.bmp: " << SDL_GetError() << std::endl;
@@ -46,7 +48,6 @@ int main(int argc, char* argv[]) {
     SDL_Texture* tilesTexture = SDL_CreateTextureFromSurface(renderer, tilesSurface);
     SDL_FreeSurface(tilesSurface);
 
-    // Assuming each tile is of size 50x50 for this example
     SDL_Rect tileRects[3] = {
         {0, 0, 50, 50},
         {50, 0, 50, 50},
@@ -68,12 +69,14 @@ int main(int argc, char* argv[]) {
                 switch (event.key.keysym.sym) {
                 case SDLK_0:
                     displayBg = !displayBg;
+                    std::cout << "Background display toggled " << (displayBg ? "ON" : "OFF") << "." << std::endl;
                     break;
                 case SDLK_1:
                 case SDLK_2:
                 case SDLK_3:
                     int tileIndex = event.key.keysym.sym - SDLK_1;
                     displayTiles[tileIndex] = !displayTiles[tileIndex];
+                    std::cout << "Tile " << (tileIndex + 1) << " display toggled " << (displayTiles[tileIndex] ? "ON" : "OFF") << " at location (" << (rand() % 750) << ", " << (rand() % 550) << ")." << std::endl;
                     break;
                 }
             }
@@ -87,7 +90,7 @@ int main(int argc, char* argv[]) {
 
         for (int i = 0; i < 3; i++) {
             if (displayTiles[i]) {
-                SDL_Rect destRect = { rand() % 750, rand() % 550, 50, 50 }; // Random location
+                SDL_Rect destRect = { rand() % 750, rand() % 550, 50, 50 };
                 SDL_RenderCopy(renderer, tilesTexture, &tileRects[i], &destRect);
             }
         }
@@ -95,6 +98,7 @@ int main(int argc, char* argv[]) {
         SDL_RenderPresent(renderer);
     }
 
+    std::cout << "Cleaning up and shutting down..." << std::endl;
     SDL_DestroyTexture(bgTexture);
     SDL_DestroyTexture(tilesTexture);
     SDL_DestroyRenderer(renderer);
