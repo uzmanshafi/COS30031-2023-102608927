@@ -1,6 +1,48 @@
 #include <SDL.h>
 #include <iostream>
-#include <cstdlib>
+#include <cmath>
+
+struct Vector2 {
+    float x, y;
+};
+
+class Box {
+public:
+    SDL_Rect rect;
+
+    bool Intersects(const Box& other) const {
+        return rect.x < other.rect.x + other.rect.w &&
+            rect.x + rect.w > other.rect.x &&
+            rect.y < other.rect.y + other.rect.h &&
+            rect.y + rect.h > other.rect.y;
+    }
+};
+
+class Circle {
+public:
+    Vector2 center;
+    float radius;
+
+    bool Intersects(const Circle& other) const {
+        float dx = center.x - other.center.x;
+        float dy = center.y - other.center.y;
+        float distance = sqrt(dx * dx + dy * dy);
+        return distance < (radius + other.radius);
+    }
+};
+
+// Helper function to render a circle
+void SDL_RenderDrawCircle(SDL_Renderer* renderer, int x, int y, int radius) {
+    for (int w = 0; w < radius * 2; w++) {
+        for (int h = 0; h < radius * 2; h++) {
+            int dx = radius - w;
+            int dy = radius - h;
+            if ((dx * dx + dy * dy) <= (radius * radius)) {
+                SDL_RenderDrawPoint(renderer, x + dx, y + dy);
+            }
+        }
+    }
+}
 
 int main(int argc, char* argv[]) {
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -8,7 +50,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    SDL_Window* window = SDL_CreateWindow("SDL Sprites and Graphics", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0);
+    SDL_Window* window = SDL_CreateWindow("SDL Collision Demo", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0);
     if (!window) {
         std::cerr << "Error creating SDL window: " << SDL_GetError() << std::endl;
         SDL_Quit();
@@ -23,39 +65,19 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::cout << "Loading background.bmp..." << std::endl;
-    SDL_Surface* bgSurface = SDL_LoadBMP("background.bmp");
-    if (!bgSurface) {
-        std::cerr << "Error loading background.bmp: " << SDL_GetError() << std::endl;
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return 1;
-    }
-    SDL_Texture* bgTexture = SDL_CreateTextureFromSurface(renderer, bgSurface);
-    SDL_FreeSurface(bgSurface);
+    Box staticBox;
+    staticBox.rect = { 300, 250, 50, 50 };
 
-    std::cout << "Loading tiles.bmp..." << std::endl;
-    SDL_Surface* tilesSurface = SDL_LoadBMP("tiles.bmp");
-    if (!tilesSurface) {
-        std::cerr << "Error loading tiles.bmp: " << SDL_GetError() << std::endl;
-        SDL_DestroyTexture(bgTexture);
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return 1;
-    }
-    SDL_Texture* tilesTexture = SDL_CreateTextureFromSurface(renderer, tilesSurface);
-    SDL_FreeSurface(tilesSurface);
+    Box movingBox;
+    movingBox.rect = { 50, 50, 50, 50 };
 
-    SDL_Rect tileRects[3] = {
-        {0, 0, 50, 50},
-        {50, 0, 50, 50},
-        {100, 0, 50, 50},
-    };
+    Circle staticCircle;
+    staticCircle.center = { 650, 300 };
+    staticCircle.radius = 25;
 
-    bool displayBg = true;
-    bool displayTiles[3] = { false, false, false };
+    Circle movingCircle;
+    movingCircle.center = { 100, 500 };
+    movingCircle.radius = 25;
 
     bool running = true;
     SDL_Event event;
@@ -67,40 +89,39 @@ int main(int argc, char* argv[]) {
 
             if (event.type == SDL_KEYDOWN) {
                 switch (event.key.keysym.sym) {
-                case SDLK_0:
-                    displayBg = !displayBg;
-                    std::cout << "Background display toggled " << (displayBg ? "ON" : "OFF") << "." << std::endl;
-                    break;
-                case SDLK_1:
-                case SDLK_2:
-                case SDLK_3:
-                    int tileIndex = event.key.keysym.sym - SDLK_1;
-                    displayTiles[tileIndex] = !displayTiles[tileIndex];
-                    std::cout << "Tile " << (tileIndex + 1) << " display toggled " << (displayTiles[tileIndex] ? "ON" : "OFF") << " at location (" << (rand() % 750) << ", " << (rand() % 550) << ")." << std::endl;
-                    break;
+                case SDLK_UP:    movingBox.rect.y -= 10; break;
+                case SDLK_DOWN:  movingBox.rect.y += 10; break;
+                case SDLK_LEFT:  movingBox.rect.x -= 10; break;
+                case SDLK_RIGHT: movingBox.rect.x += 10; break;
+                case SDLK_w:     movingCircle.center.y -= 10; break;
+                case SDLK_s:     movingCircle.center.y += 10; break;
+                case SDLK_a:     movingCircle.center.x -= 10; break;
+                case SDLK_d:     movingCircle.center.x += 10; break;
                 }
             }
         }
 
+        bool boxCollided = movingBox.Intersects(staticBox);
+        bool circleCollided = movingCircle.Intersects(staticCircle);
+
         SDL_RenderClear(renderer);
 
-        if (displayBg) {
-            SDL_RenderCopy(renderer, bgTexture, NULL, NULL);
-        }
+        // Renders static box and circle
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderFillRect(renderer, &staticBox.rect);
+        SDL_RenderDrawCircle(renderer, staticCircle.center.x, staticCircle.center.y, staticCircle.radius);
 
-        for (int i = 0; i < 3; i++) {
-            if (displayTiles[i]) {
-                SDL_Rect destRect = { rand() % 750, rand() % 550, 50, 50 };
-                SDL_RenderCopy(renderer, tilesTexture, &tileRects[i], &destRect);
-            }
-        }
+        // Renders moving box with collision visualization
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+        SDL_RenderFillRect(renderer, &movingBox.rect);
+
+        // Renders moving circle with collision visualization
+        SDL_SetRenderDrawColor(renderer, boxCollided ? 255 : 0, 255, 0, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawCircle(renderer, movingCircle.center.x, movingCircle.center.y, movingCircle.radius);
 
         SDL_RenderPresent(renderer);
     }
 
-    std::cout << "Cleaning up and shutting down..." << std::endl;
-    SDL_DestroyTexture(bgTexture);
-    SDL_DestroyTexture(tilesTexture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
