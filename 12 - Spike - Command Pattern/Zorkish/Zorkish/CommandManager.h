@@ -1,12 +1,12 @@
 #pragma once
-#include <unordered_map>
 #include "Command.h"
+#include <string>
+#include <unordered_map>
 
 class CommandManager {
-private:
-    std::unordered_map<std::string, Command*> commands;
 public:
     void registerCommand(const std::string& name, Command* command);
-    void executeCommand(const std::string& name, const std::string& argument);
+    void executeCommand(const std::string& name);
+private:
+    std::unordered_map<std::string, Command*> commands;
 };
-    

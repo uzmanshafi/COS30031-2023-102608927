@@ -128,8 +128,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
+    <ClCompile Include="AliasCommand.cpp" />
+    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="DebugTreeCommand.cpp" />
     <ClCompile Include="Gameplay.cpp" />
+    <ClCompile Include="GameWorldLoader.cpp" />
+    <ClCompile Include="GoCommand.cpp" />
     <ClCompile Include="Help.cpp" />
+    <ClCompile Include="HelpCommand.cpp" />
+    <ClCompile Include="InventoryCommand.cpp" />
+    <ClCompile Include="Location.cpp" />
+    <ClCompile Include="LookCommand.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="NewHighScore.cpp" />
     <ClCompile Include="SelectAdventure.cpp" />
@@ -140,14 +150,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="About.h" />
+    <ClInclude Include="AliasCommand.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="DebugTreeCommand.h" />
     <ClInclude Include="Gameplay.h" />
+    <ClInclude Include="GameWorldLoader.h" />
+    <ClInclude Include="GoCommand.h" />
     <ClInclude Include="Help.h" />
+    <ClInclude Include="HelpCommand.h" />
+    <ClInclude Include="InventoryCommand.h" />
+    <ClInclude Include="json.hpp" />
+    <ClInclude Include="Location.h" />
+    <ClInclude Include="LookCommand.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="NewHighScore.h" />
     <ClInclude Include="SelectAdventure.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="ViewHallOfFame.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="adventure.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

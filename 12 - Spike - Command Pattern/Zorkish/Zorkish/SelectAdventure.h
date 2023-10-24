@@ -1,5 +1,7 @@
 #pragma once
 #include "State.h"
+#include <string>
+
 
 class SelectAdventure : public State {
 public:
@@ -7,4 +9,6 @@ public:
     void run() override;
     void terminate() override;
     void handleInput() override;
+private:
+    void loadAdventure(const std::string& filename);
 };

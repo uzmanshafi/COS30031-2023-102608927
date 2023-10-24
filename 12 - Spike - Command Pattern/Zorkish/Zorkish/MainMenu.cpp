@@ -5,6 +5,8 @@
 #include "About.h"
 #include "ViewHallOfFame.h"
 #include <iostream>
+#include <limits>
+
 
 void MainMenu::initialize() {
     // Display the menu as usual
@@ -29,26 +31,33 @@ void MainMenu::terminate() {
 
 void MainMenu::handleInput() {
     int input;
-    std::cin >> input;
-    switch (input) {
-    case 1:
-        StateManager::getInstance()->changeState(new SelectAdventure());
-        break;
-    case 2:
-        StateManager::getInstance()->changeState(new ViewHallOfFame());
-        break;
-    case 3:
-        StateManager::getInstance()->changeState(new Help());
-        break;
-    case 4:
-        StateManager::getInstance()->changeState(new About());
-        break;
-    case 5:
-        terminate();
-        exit(0); // Exits the program for now
-        break;
-    default:
-        std::cout << "Invalid selection. Please select 1-5: ";
-        break;
+    if (std::cin >> input) {
+        switch (input) {
+        case 1:
+            StateManager::getInstance()->changeState(new SelectAdventure());
+            break;
+        case 2:
+            StateManager::getInstance()->changeState(new ViewHallOfFame());
+            break;
+        case 3:
+            StateManager::getInstance()->changeState(new Help());
+            break;
+        case 4:
+            StateManager::getInstance()->changeState(new About());
+            break;
+        case 5:
+            terminate();
+            exit(0); // Exits the program for now
+            break;
+        default:
+            std::cout << "Invalid selection. Please select 1-5: ";
+            break;
+        }
+    }
+    else {
+        // Clears the error state and ignore the invalid input
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Invalid input. Please enter a number between 1-5: ";
     }
 }

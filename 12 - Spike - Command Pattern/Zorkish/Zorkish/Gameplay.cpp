@@ -4,21 +4,39 @@
 #include "ViewHallOfFame.h"
 #include <iostream>
 #include <string>
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 void Gameplay::initialize() {
-    std::cout << "Welcome to Zorkish: Void World" << std::endl;
-    std::cout << "This world is simple and pointless. Used it to test Zorkish phase 1 spec." << std::endl;
+    if (locations.empty()) {
+        std::cout << "No locations to display." << std::endl;
+        return;
+    }
+    currentLocationIndex = 0;
+    std::cout << locations[currentLocationIndex].getName() << std::endl;
+    std::cout << locations[currentLocationIndex].getDescription() << std::endl;
     std::cout << ":> ";
 }
 
-void Gameplay::run() {
-    // For future phases: gameplay logic, updates, animations etc.
+
+Gameplay::Gameplay() {
+    currentLocationIndex = 0;
 }
+
+Gameplay::Gameplay(const std::vector<Location>& locs) : locations(locs) {}
+
+void Gameplay::run() {}
 
 void Gameplay::handleInput() {
     std::string command;
     std::getline(std::cin, command);
 
+    if (command == "go") {
+        currentLocationIndex = (currentLocationIndex + 1) % locations.size();
+        std::cout << locations[currentLocationIndex].getName() << std::endl;
+        std::cout << locations[currentLocationIndex].getDescription() << std::endl;
+    }
     if (command == "quit") {
         std::cout << "Your adventure has ended without fame or fortune." << std::endl;
         StateManager::getInstance()->changeState(new MainMenu());
