@@ -40,7 +40,7 @@ const int SCREEN_BPP = 32;
 const int BOX_WIDTH = 50;
 const int BOX_HEIGHT = 50;
 const int BOX_SPEED = 10;
-const int BOX_COUNT = 100;
+const int BOX_COUNT = 30;
 
 const int TEST_TIME = 3 * 1000; // ie, 3*1000 = 3 seconds
 
