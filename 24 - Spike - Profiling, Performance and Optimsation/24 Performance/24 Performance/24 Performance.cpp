@@ -27,8 +27,11 @@ Updated 2017-10-26
 #include <iostream>
 #include <ctime>
 #include "SDL.h"
+#include <chrono>
 
-// using namespace std;
+
+using namespace std;
+using namespace std::chrono;
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -39,7 +42,7 @@ const int BOX_HEIGHT = 50;
 const int BOX_SPEED = 10;
 const int BOX_COUNT = 100;
 
-const int TEST_TIME = 10 * 1000; // ie, 3*1000 = 3 seconds
+const int TEST_TIME = 3 * 1000; // ie, 3*1000 = 3 seconds
 
 enum BoxState { CONTACT_NO, CONTACT_YES };
 
@@ -48,7 +51,9 @@ struct CrashBox {
 	int dx, dy; // vel
 	int w, h; // size
 	BoxState state;
+	SDL_Rect r; // Cached rectangle
 };
+
 
 // Global variables. (Apparently evil.)
 CrashBox boxes[BOX_COUNT];
@@ -77,12 +82,11 @@ void init_boxes()
 }
 
 
-void render_box(CrashBox box, SDL_Renderer* renderer, SDL_Color& color) //TODO: try &box
-{
-	SDL_Rect r = { box.x, box.y, box.w, box.h }; //TODO: try cached rect's
+void render_box(CrashBox& box, SDL_Renderer* renderer, SDL_Color& color) {
 	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-	SDL_RenderFillRect(renderer, &r);
+	SDL_RenderFillRect(renderer, &box.r);
 }
+
 
 void render_boxes(SDL_Renderer* renderer)
 {
@@ -277,27 +281,30 @@ void crash_test_all_D()
 
 //-----------------------------------------------------------------------------
 
-void update_boxes()
-{
+void update_boxes() {
 	// First move all boxes
 	for (int i = 0; i < BOX_COUNT; i++) {
 		// update position using current velocity
-		boxes[i].x = boxes[i].x + boxes[i].dx;
-		boxes[i].y = boxes[i].y + boxes[i].dy;
+		boxes[i].x += boxes[i].dx;
+		boxes[i].y += boxes[i].dy;
+
 		// check for wrap-around condition
 		if (boxes[i].x >= SCREEN_WIDTH) boxes[i].x -= SCREEN_WIDTH;
-		if (boxes[i].x < 0) boxes[i].x += SCREEN_WIDTH;
+		else if (boxes[i].x < 0) boxes[i].x += SCREEN_WIDTH;
 		if (boxes[i].y >= SCREEN_HEIGHT) boxes[i].y -= SCREEN_HEIGHT;
-		if (boxes[i].y < 0) boxes[i].y += SCREEN_HEIGHT;
-		//TODO: try else if logic
+		else if (boxes[i].y < 0) boxes[i].y += SCREEN_HEIGHT;
+
+		// Update the cached rectangle
+		boxes[i].r = { boxes[i].x, boxes[i].y, boxes[i].w, boxes[i].h };
 	}
 
-	// 1. mark all boxes as not collided //TODO: put this in the move loop?
+	// 1. mark all boxes as not collided
 	for (int i = 0; i < BOX_COUNT; i++)
 		boxes[i].state = CONTACT_NO;
 	// 2. call whatever function has been set to test all i against j boxes
 	crash_test_all_ptr();
 }
+
 
 
 //-----------------------------------------------------------------------------
@@ -333,6 +340,8 @@ int run_test(const char* title, void (*function_ptr)()) {
 
 	if (renderer == nullptr) {
 		std::cout << "Failed to create renderer : " << SDL_GetError();
+		SDL_DestroyWindow(window); // Clean up before exiting
+		SDL_Quit();
 		return -1;
 	}
 
@@ -343,7 +352,10 @@ int run_test(const char* title, void (*function_ptr)()) {
 	// sanity check that the crash test function pointer has been set
 	if (crash_test_all_ptr == nullptr) {
 		printf("EH? Set the crash_test_all_ptr first!\n");
-		return 1;
+		SDL_DestroyRenderer(renderer);
+		SDL_DestroyWindow(window);
+		SDL_Quit();
+		return -1;
 	}
 
 	// initialise each crashbox
@@ -351,8 +363,9 @@ int run_test(const char* title, void (*function_ptr)()) {
 
 	// initialise test count/time values
 	Uint32 loop_count = 0;
-	Uint32 tick_start = SDL_GetTicks(); // start time == now!
-	Uint32 tick_target = tick_start + TEST_TIME; // when to stop
+	auto start_time = high_resolution_clock::now();
+	auto target_time = start_time + milliseconds(TEST_TIME);
+
 
 	// CLASSIC GAME LOOP
 	bool running = true;
@@ -365,8 +378,8 @@ int run_test(const char* title, void (*function_ptr)()) {
 		}
 		// 2. count...
 		loop_count++;
-		// 3. check for test time finished
-		if (SDL_GetTicks() >= tick_target) running = false;
+
+		if (high_resolution_clock::now() >= target_time) running = false; 
 		// 4. move all the crash boxes and check for collisions
 		update_boxes();
 
@@ -385,7 +398,7 @@ int run_test(const char* title, void (*function_ptr)()) {
 	}
 	// note the end time
 	Uint32 tick_end = SDL_GetTicks();
-
+	auto end_time = high_resolution_clock::now();
 	// CLEAN UP TIME (and close the SDL window)
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
@@ -393,22 +406,45 @@ int run_test(const char* title, void (*function_ptr)()) {
 
 	// SHOW STATS
 	printf("Loops: %d\n", loop_count);
-	printf("Time: %d (ms)\n", (tick_end - tick_start));
-	printf("Loops/Second: %f\n", (float(loop_count) / (tick_end - tick_start) * 1000.0));
+	printf("Time: %lld (ms)\n", duration_cast<milliseconds>(end_time - start_time).count()); // <-- And here
+	printf("Loops/Second: %f\n", (float(loop_count) / duration_cast<milliseconds>(end_time - start_time).count() * 1000.0));
 
 	return 0;
 }
 
 int main(int argc, char* args[])
 {
-	run_test("Test A1", crash_test_all_A1); //TODO: not paying attention to return values. :(
-	run_test("Test A2", crash_test_all_A2);
-	run_test("Test B", crash_test_all_B);
-	run_test("Test C", crash_test_all_C);
-	run_test("Test D", crash_test_all_D);
+	int status;
 
-	// printf("\n<press any key>\n");
-	// getchar();
+	status = run_test("Test A1", crash_test_all_A1);
+	if (status != 0) {
+		std::cerr << "Error in Test A1. Exiting." << std::endl;
+		return status;
+	}
+
+	status = run_test("Test A2", crash_test_all_A2);
+	if (status != 0) {
+		std::cerr << "Error in Test A2. Exiting." << std::endl;
+		return status;
+	}
+
+	status = run_test("Test B", crash_test_all_B);
+	if (status != 0) {
+		std::cerr << "Error in Test B. Exiting." << std::endl;
+		return status;
+	}
+
+	status = run_test("Test C", crash_test_all_C);
+	if (status != 0) {
+		std::cerr << "Error in Test C. Exiting." << std::endl;
+		return status;
+	}
+
+	status = run_test("Test D", crash_test_all_D);
+	if (status != 0) {
+		std::cerr << "Error in Test D. Exiting." << std::endl;
+		return status;
+	}
 
 	return 0;
 }
