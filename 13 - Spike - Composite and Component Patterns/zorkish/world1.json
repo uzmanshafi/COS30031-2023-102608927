@@ -33,46 +33,46 @@
 							"desc": "An old wooden chest. Wonder what's inside?"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Water World",
+			"desc": "bit of a swampy world.",
+			"connections": [
+				{
+					"direction": "up",
+					"name": "River Camp"
+				}
+			],
+			"inventory": [
+				{
+					"name": "rabbit",
+					"desc": "rare red eyed rabbit."
 				},
 				{
-					"name": "Water World",
-					"desc": "bit of a swampy world.",
-					"connections": [
-						{
-							"direction": "up",
-							"name": "River Camp"
-						}
-					],
-					"inventory": [
-						{
-							"name": "rabbit",
-							"desc": "rare red eyed rabbit."
-						},
-						{
-							"name": "burnt stick",
-							"desc": "burnt recently."
-						}
-					]
+					"name": "burnt stick",
+					"desc": "burnt recently."
+				}
+			]
+		},
+		{
+			"name": "Box World",
+			"desc": "a boxy world.",
+			"connections": [
+				{
+					"direction": "west",
+					"name": "dark forest"
+				}
+			],
+			"inventory": [
+				{
+					"name": "mushrooms",
+					"desc": "trippy mushrooms."
 				},
 				{
-					"name": "Box World",
-					"desc": "a boxy world.",
-					"connections": [
-						{
-							"direction": "west",
-							"name": "dark forest"
-						}
-					],
-					"inventory": [
-						{
-							"name": "mushrooms",
-							"desc": "trippy mushrooms."
-						},
-						{
-							"name": "glowstone",
-							"desc": "weird glowy rock."
-						}
-					]
+					"name": "glowstone",
+					"desc": "weird glowy rock."
 				}
 			]
 		}
