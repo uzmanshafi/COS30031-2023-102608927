@@ -1,12 +1,12 @@
 #include "Player.h"
 #include "Entity.h"
 
-Player::Player(Location* loc, Inventory* inv) : _location(loc), _inventory(inv), _health(100)
+Player::Player(Location* loc, Inventory* inv) : _location(loc), _inventory(inv), _health(100), _currentSublocation(nullptr) 
 {
 	_locName = _location->getName();
-
-	_inventory->add(new Item("map", "map of the world!"));
+	_inventory->add(new Item("Map", "map of the world!"));
 }
+
 
 Player::~Player()
 {
@@ -57,6 +57,22 @@ void Player::setLocation(Location* loc)
 {
 	_location = loc;
 }
+
+void Player::enterSublocation(Location* subloc) {
+	_currentSublocation = subloc;
+}
+
+void Player::exitSublocation() {
+	_currentSublocation = nullptr;
+}
+
+Location* Player::getCurrentLocation() {
+	if (_currentSublocation) {
+		return _currentSublocation;
+	}
+	return _location;
+}
+
 
 Entity* Player::findEntityByName(const string& entityName) {
 	// Checks if the entity is in the current location

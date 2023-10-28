@@ -31,4 +31,6 @@ public:
 
     void update();
     void render();
+    void movePlayerToSublocation(string subLocName);
+    void exitSublocation(); 
 };

@@ -11,12 +11,12 @@ void OpenCommand::execute(vector<string> args, Player* player)
         }
         else
         {
-            cout << "Cannot find the entity to open.";
+            cout << "Cannot find the entity to open.\n";
         }
     }
     else
     {
-        cout << "Specify what you want to open.";
+        cout << "Specify what you want to open.\n";
     }
 }
 

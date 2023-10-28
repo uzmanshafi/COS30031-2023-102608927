@@ -12,6 +12,8 @@ private:
 	Location* _location;
 	int _health;
 
+	//I used this to support sublocations
+	Location* _currentSublocation;
 public:
 	Player(Location*, Inventory*);
 	~Player();
@@ -30,4 +32,8 @@ public:
 	void setLocation(Location*);
 
 	Entity* findEntityByName(const string& entityName);
+
+	void enterSublocation(Location* subloc);
+	void exitSublocation();
+	Location* getCurrentLocation();
 };

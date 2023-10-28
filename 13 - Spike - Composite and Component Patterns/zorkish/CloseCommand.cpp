@@ -4,7 +4,7 @@ void CloseCommand::execute(vector<string> args, Player* player)
 {
     if (args.size() < 2)
     {
-        cout << "Close what?" << endl;
+        cout << "Close what?\n" << endl;
         return;
     }
 
@@ -20,6 +20,6 @@ void CloseCommand::execute(vector<string> args, Player* player)
     }
     else
     {
-        cout << "Cannot find " << entityName << " to close." << endl;
+        cout << "Cannot find " << entityName << " to close.\n" << endl;
     }
 }
