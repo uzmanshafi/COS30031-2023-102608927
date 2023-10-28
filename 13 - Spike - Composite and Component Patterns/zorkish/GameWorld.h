@@ -18,7 +18,6 @@ private:
 
     vector<string> processInput();
     void movePlayer();
-
 public:
     GameWorld(json);
     ~GameWorld();

@@ -1,4 +1,5 @@
 #include "GameWorld.h"
+#include <sstream>
 
 GameWorld::GameWorld(json data) : _running(true)
 {
@@ -76,7 +77,7 @@ void GameWorld::movePlayerToSublocation(string subLocName)
             return;
         }
     }
-    // Handle case where sublocation is not found
+    cout << "Error" << subLocName << "not found\n";
 }
 
 void GameWorld::exitSublocation()

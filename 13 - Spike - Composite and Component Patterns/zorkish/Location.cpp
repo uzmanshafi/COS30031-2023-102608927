@@ -54,6 +54,7 @@ string Location::getDesc() const
 	return _desc;
 }
 
+
 string Location::findConnection(const string& dir)
 {
 	if (_connections.find(dir) != _connections.end())
@@ -111,6 +112,12 @@ vector<Location*> Location::getSublocations() const
 	return _sublocations;
 }
 
+vector<Entity*> Location::getEntities() const
+{
+	return _entities;
+}
+
+
 Inventory* Location::getInventory()
 {
 	return &_inventory;
@@ -125,5 +132,23 @@ Entity* Location::findEntityByName(const string& entityName)
 	}
 	return nullptr;
 }
+
+vector<string> Location::getEntityDescriptions() const
+{
+	vector<string> entityDescriptions;
+
+	for (const Entity* entity : _entities) {
+		if (entity->getState() == "open") {
+			entityDescriptions.push_back("The " + entity->getName() + " is now open.");
+		}
+		else if (entity->getState() == "closed") {
+			entityDescriptions.push_back("The " + entity->getName() + " is now closed.");
+		}
+	}
+
+	return entityDescriptions;
+}
+
+
 
 

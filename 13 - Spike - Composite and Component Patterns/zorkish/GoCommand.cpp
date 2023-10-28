@@ -29,7 +29,6 @@ void GoCommand::execute(vector<string> command, Player* player)
         if (subLoc)
         {
             player->setLocation(subLoc);
-            cout << subLoc->getDesc() << endl;  //prints the sublocation's description
         }
         else
         {

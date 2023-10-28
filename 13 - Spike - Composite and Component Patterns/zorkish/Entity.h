@@ -14,7 +14,7 @@ public:
     string getName() const;
     string getDescription() const;
     string performAction(const string& actionName);
-
+    string getState() const;
 private:
     string _name;
     string _description;

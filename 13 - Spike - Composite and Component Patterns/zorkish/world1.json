@@ -35,7 +35,7 @@
 								"state": "closed"
 							},
 							"actions": {
-								"open": "The chest is now open.",
+								"open": "The chest is now open.\n",
 								"close": "The chest is now closed."
 							}
 						}

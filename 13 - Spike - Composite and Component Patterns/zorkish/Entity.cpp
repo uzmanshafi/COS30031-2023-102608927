@@ -22,13 +22,22 @@ string Entity::getDescription() const {
 
 string Entity::performAction(const string& actionName) {
     if (_actions.find(actionName) != _actions.end()) {
-        if (actionName == "open") {
+        if (actionName == "open" && _attributes["state"] == "closed") {
             _attributes["state"] = "open";
         }
-        else if (actionName == "close") {
+        else if (actionName == "close" && _attributes["state"] == "open") {
             _attributes["state"] = "closed";
         }
         return _actions[actionName];
     }
     return "Cannot perform this action on " + _name;
 }
+
+string Entity::getState() const {
+    auto it = _attributes.find("state");
+    if (it != _attributes.end()) {
+        return it->second;
+    }
+    return "";
+}
+

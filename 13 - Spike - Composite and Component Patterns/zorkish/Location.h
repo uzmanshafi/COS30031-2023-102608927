@@ -1,51 +1,60 @@
 #pragma once
+
 #include <string>
 #include <map>
+#include <vector>
 #include "json.hpp"
 #include "Inventory.h"
-#include <vector>
 #include "Entity.h"
 
+// Forward declaration
+class Item;
+
 using json = nlohmann::json;
-using namespace std;
 
 class Location
 {
 private:
-	string _name;
-	string _desc;
-	map<string, string> _connections;
-	Inventory _inventory;
+    // Attributes
+    string _name;
+    string _desc;
+    map<string, string> _connections;
+    Inventory _inventory;
 
-	//creating a sublocation for task 13
-	vector<Location*> _sublocations;
+    // Sublocations
+    vector<Location*> _sublocations;
 
-	vector<Entity*> _entities;
+    // Entities
+    vector<Entity*> _entities;
+
 public:
-	Location(json);
-	~Location();
+    // Constructors & Destructor
+    Location(json data);
+    ~Location();
 
-	//Descriptors
-	string getName() const;
-	string getDesc() const;
+    // Descriptors
+    string getName() const;
+    string getDesc() const;
 
-	//Connections
-	string findConnection(const string&);
-	void showConnections();
+    // Connection management
+    string findConnection(const string& direction);
+    void showConnections();
 
-	//Inventory interface
-	bool findItem(const string&);
-	void viewItems();
-	bool addItem(Item*);
-	bool removeItem(const string&);
-	Item* getItem(const string&);
-	Inventory* getInventory();
+    // Inventory management
+    bool findItem(const string& itemName);
+    void viewItems();
+    bool addItem(Item* item);
+    bool removeItem(const string& itemName);
+    Item* getItem(const string& itemName);
+    Inventory* getInventory();
 
-	//sublocations for  task 13
-	Location* findSublocation(const string& name);
+    // Sublocation management
+    Location* findSublocation(const string& sublocationName);
+    vector<Location*> getSublocations() const;
 
-	//returns the sublocations
-	vector<Location*> getSublocations() const;
+    // Entity management
+    Entity* findEntityByName(const string& entityName);
+    vector<Entity*> getEntities() const;
+    vector<string> getEntityDescriptions() const;
 
-	Entity* findEntityByName(const string& entityName);
 };
