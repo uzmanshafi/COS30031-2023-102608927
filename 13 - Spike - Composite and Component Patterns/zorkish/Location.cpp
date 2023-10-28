@@ -89,10 +89,11 @@ Item* Location::getItem(const string& name)
 
 Location* Location::findSublocation(const string& name)
 {
-	for (Location* subloc : _sublocations)
+	for (Location* subLoc : _sublocations)
 	{
-		if (subloc->getName() == name)
-			return subloc;
+		if (subLoc->getName() == name)
+			return subLoc;
 	}
 	return nullptr;
 }
+
