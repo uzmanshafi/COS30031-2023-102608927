@@ -62,8 +62,6 @@ void GameWorld::movePlayer()
 	_player->setLocation(getLocation(_player->getLocName()));
 }
 
-
-
 bool GameWorld::running()
 {
 	return _running;

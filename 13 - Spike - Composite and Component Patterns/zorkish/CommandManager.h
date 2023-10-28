@@ -6,6 +6,8 @@
 #include "InventoryCommand.h"
 #include "LookCommand.h"
 #include "DebugCommand.h"
+#include "OpenCommand.h"
+#include "CloseCommand.h"
 
 class CommandManager
 {

@@ -1,13 +1,24 @@
 #pragma once
-#include <map>
 #include <string>
-#include "Component.h"
+#include <map>
+#include "json.hpp"
+#include <vector>
+
+using json = nlohmann::json;
+using namespace std;
 
 class Entity {
-private:
-    std::map<std::string, Component*> _components;
 public:
-    void addComponent(const std::string& componentName, Component* component);
-    Component* getComponent(const std::string& componentName);
-    void update();
+    Entity(json data);
+    ~Entity();
+    string getName() const;
+    string getDescription() const;
+    string performAction(const string& actionName);
+
+private:
+    string _name;
+    string _description;
+    map<string, string> _attributes;
+    map<string, string> _actions;
 };
+

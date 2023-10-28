@@ -27,18 +27,17 @@
 				{
 					"name": "Rock Dungeon",
 					"desc": "A dark, mysterious dungeon carved into the mountain.",
-					"inventory": [
+					"entities": [
 						{
 							"name": "Chest",
 							"desc": "An old wooden chest. Wonder what's inside?",
 							"attributes": {
-								"isOpen": false,
-								"contains": "gold coins"
+								"state": "closed"
 							},
-							"actions": [
-								"open",
-								"close"
-							]
+							"actions": {
+								"open": "The chest is now open.",
+								"close": "The chest is now closed."
+							}
 						}
 					]
 				}

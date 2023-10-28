@@ -1,6 +1,7 @@
 #pragma once
 #include "Inventory.h"
 #include "Location.h"
+#include "Entity.h"
 
 
 class Player
@@ -27,4 +28,6 @@ public:
 
 	Location* getLocation();
 	void setLocation(Location*);
+
+	Entity* findEntityByName(const string& entityName);
 };

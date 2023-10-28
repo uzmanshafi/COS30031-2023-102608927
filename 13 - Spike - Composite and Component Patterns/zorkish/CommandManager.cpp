@@ -8,6 +8,8 @@ CommandManager::CommandManager(Player* player) : _player(player)
 	_commands.emplace("inventory", new InventoryCommand());
 	_commands.emplace("alias", new AliasCommand(this));
 	_commands.emplace("debug", new DebugCommand());
+	_commands.emplace("open", new OpenCommand());
+	_commands.emplace("close", new CloseCommand());
 }
 
 CommandManager::~CommandManager()

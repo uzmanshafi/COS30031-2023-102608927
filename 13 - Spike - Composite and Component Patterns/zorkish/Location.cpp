@@ -29,6 +29,15 @@ Location::Location(json data)
 			_sublocations.push_back(new Location(subloc));
 		}
 	}
+
+	// Entities
+	if (data.contains("entities"))
+	{
+		for (json entityData : data["entities"])
+		{
+			_entities.push_back(new Entity(entityData));
+		}
+	}
 }
 
 Location::~Location()
@@ -107,5 +116,14 @@ Inventory* Location::getInventory()
 	return &_inventory;
 }
 
+Entity* Location::findEntityByName(const string& entityName)
+{
+	for (Entity* entity : _entities)
+	{
+		if (entity->getName() == entityName)
+			return entity;
+	}
+	return nullptr;
+}
 
 

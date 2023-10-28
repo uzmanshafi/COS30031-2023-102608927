@@ -4,6 +4,7 @@
 #include "json.hpp"
 #include "Inventory.h"
 #include <vector>
+#include "Entity.h"
 
 using json = nlohmann::json;
 using namespace std;
@@ -18,6 +19,8 @@ private:
 
 	//creating a sublocation for task 13
 	vector<Location*> _sublocations;
+
+	vector<Entity*> _entities;
 public:
 	Location(json);
 	~Location();
@@ -43,4 +46,6 @@ public:
 
 	//returns the sublocations
 	vector<Location*> getSublocations() const;
+
+	Entity* findEntityByName(const string& entityName);
 };

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Entity.h"
 
 Player::Player(Location* loc, Inventory* inv) : _location(loc), _inventory(inv), _health(100)
 {
@@ -56,3 +57,18 @@ void Player::setLocation(Location* loc)
 {
 	_location = loc;
 }
+
+Entity* Player::findEntityByName(const string& entityName) {
+	// Checks if the entity is in the current location
+	Entity* entity = _location->findEntityByName(entityName);
+	if (entity) return entity;
+
+	// If not, and if the location has sublocations, checks those too
+	for (auto& sublocation : _location->getSublocations()) {
+		entity = sublocation->findEntityByName(entityName);
+		if (entity) return entity;
+	}
+
+	return nullptr;  // If entity was not found in location or sublocations
+}
+
