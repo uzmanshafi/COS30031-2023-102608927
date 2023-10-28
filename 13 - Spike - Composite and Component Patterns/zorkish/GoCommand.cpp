@@ -20,16 +20,23 @@ void GoCommand::execute(vector<string> command, Player* player)
     else if (command.size() > 2 && command[1] == "into")
     {
         // Handles moving into a sublocation
-        Location* subLoc = pLoc->findSublocation(command.at(2));
+        string sublocationName = command[2];
+        for (int i = 3; i < command.size(); i++) {
+            sublocationName += " " + command[i];
+        }
+
+        Location* subLoc = pLoc->findSublocation(sublocationName);
         if (subLoc)
         {
             player->setLocation(subLoc);
+            cout << subLoc->getDesc() << endl;  //prints the sublocation's description
         }
         else
         {
             cout << "Invalid sublocation. Please choose another sublocation." << endl;
         }
     }
+
     else
     {
         cout << "Unable to process command. Please input a valid command and direction." << endl;
