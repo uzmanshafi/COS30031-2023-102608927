@@ -77,5 +77,22 @@ void GameWorld::update()
 
 void GameWorld::render()
 {
-	cout << _player->getLocation()->getDesc() << endl << ">> ";
+	Location* currentLocation = _player->getLocation();
+
+	// Display the description of the current location
+	cout << currentLocation->getDesc() << endl;
+
+	// Check if the current location has any sublocations
+	vector<Location*> sublocations = currentLocation->getSublocations(); // Assuming you've defined this function
+
+	if (!sublocations.empty())
+	{
+		cout << "Available sublocations: " << endl;
+		for (Location* sublocation : sublocations)
+		{
+			cout << "- " << sublocation->getName() << endl;
+		}
+	}
+
+	cout << ">> ";
 }

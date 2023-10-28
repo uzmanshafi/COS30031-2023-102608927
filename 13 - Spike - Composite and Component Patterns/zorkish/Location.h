@@ -39,4 +39,7 @@ public:
 
 	//sublocations for  task 13
 	Location* findSublocation(const string& name);
+
+	//returns the sublocations
+	vector<Location*> getSublocations() const;
 };
