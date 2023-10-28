@@ -36,6 +36,7 @@ public:
 	bool addItem(Item*);
 	bool removeItem(const string&);
 	Item* getItem(const string&);
+	Inventory* getInventory();
 
 	//sublocations for  task 13
 	Location* findSublocation(const string& name);

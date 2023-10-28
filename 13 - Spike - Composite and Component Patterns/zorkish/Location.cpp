@@ -102,5 +102,10 @@ vector<Location*> Location::getSublocations() const
 	return _sublocations;
 }
 
+Inventory* Location::getInventory()
+{
+	return &_inventory;
+}
+
 
 

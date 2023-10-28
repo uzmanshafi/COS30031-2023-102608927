@@ -79,11 +79,24 @@ void GameWorld::render()
 {
 	Location* currentLocation = _player->getLocation();
 
-	// Display the description of the current location
+	// Displays the description of the current location
 	cout << currentLocation->getDesc() << endl;
 
-	// Check if the current location has any sublocations
-	vector<Location*> sublocations = currentLocation->getSublocations(); // Assuming you've defined this function
+	// Displays inventory items in the current location
+	Inventory* currentInventory = currentLocation->getInventory();
+
+	vector<Item*> items = currentInventory->getItems();
+	if (!items.empty())
+	{
+		cout << "Item Found: " << endl;
+		for (Item* item : items)
+		{
+			cout << "- " << item->getName() << " - " << item->getDesc() << endl;
+		}
+	}
+
+	// Checks if the current location has any sublocations
+	vector<Location*> sublocations = currentLocation->getSublocations();
 
 	if (!sublocations.empty())
 	{

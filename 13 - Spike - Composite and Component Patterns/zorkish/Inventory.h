@@ -9,18 +9,20 @@ using namespace std;
 class Inventory
 {
 private:
-	vector<Item*> _items;
+    vector<Item*> _items;
 
 public:
-	Inventory();
-	~Inventory();
+    Inventory();
+    ~Inventory();
 
-	bool find(const string&);
+    bool find(const string&);
 
-	void view();
+    void view();
 
-	bool add(Item*);
-	bool remove(const string&);
+    bool add(Item*);
+    bool remove(const string&);
 
-	Item* get(const string&);
+    Item* get(const string&);
+
+    vector<Item*> getItems() const;
 };
