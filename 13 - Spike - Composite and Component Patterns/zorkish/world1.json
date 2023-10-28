@@ -41,7 +41,7 @@
 			"desc": "bit of a swampy world.",
 			"connections": [
 				{
-					"direction": "up",
+					"direction": "south",
 					"name": "River Camp"
 				}
 			],

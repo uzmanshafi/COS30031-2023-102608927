@@ -33,6 +33,10 @@ void Help::render()
 	std::cout << "Zorkish :: Help\n";
 	std::cout << "------------------------\n";
 	std::cout << "The following commands are supported:\n";
+	std::cout << "go (north, south, west)\n";
+	std::cout << "go into\n";
+	std::cout << "look\n";
+	std::cout << "open\n";
 	std::cout << "quit\n";
 	std::cout << "hiscore\n";
 	std::cout << "Press Twice Enter to go back.\n";
