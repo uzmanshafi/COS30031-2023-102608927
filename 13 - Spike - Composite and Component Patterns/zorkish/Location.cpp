@@ -21,6 +21,14 @@ Location::Location(json data)
 	{
 		_inventory.add(new Item(item["name"], item["desc"]));
 	}
+
+	if (data.contains("sublocations"))
+	{
+		for (json subloc : data["sublocations"])
+		{
+			_sublocations.push_back(new Location(subloc));
+		}
+	}
 }
 
 Location::~Location()
@@ -77,4 +85,14 @@ bool Location::removeItem(const string& name)
 Item* Location::getItem(const string& name)
 {
 	return _inventory.get(name);
+}
+
+Location* Location::findSublocation(const string& name)
+{
+	for (Location* subloc : _sublocations)
+	{
+		if (subloc->getName() == name)
+			return subloc;
+	}
+	return nullptr;
 }

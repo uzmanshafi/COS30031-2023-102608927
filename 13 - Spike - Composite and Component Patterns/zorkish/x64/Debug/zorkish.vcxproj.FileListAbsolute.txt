@@ -1,2 +1,3 @@
 C:\Users\storm\Documents\GitHub\COS30031-2023-100595153\08 - Spike - Game State Management\zorkish\x64\Debug\zorkish.exe
 C:\Users\storm\Documents\GitHub\GAMES PROGRAMMING REPO\COS30031-2023-102608927\12 - Spike - Command Pattern\zorkish\x64\Debug\zorkish.exe
+C:\Users\storm\Documents\GitHub\GAMES PROGRAMMING REPO\COS30031-2023-102608927\13 - Spike - Composite and Component Patterns\zorkish\x64\Debug\zorkish.exe

@@ -1,73 +1,78 @@
 {
-	"locations":
-	[
+	"locations": [
 		{
-			"name":"Mountain World",
-			"desc":"peak of the highest mountain valley",
-			"connections":
-			[
+			"name": "Mountain World",
+			"desc": "peak of the highest mountain valley",
+			"connections": [
 				{
-					"direction":"north",
-					"name":"Rock Town"
+					"direction": "north",
+					"name": "Rock Town"
 				},
 				{
-					"direction":"left",
-					"name":"Rock Road"
+					"direction": "left",
+					"name": "Rock Road"
 				}
-			],		
-			"inventory":
-			[
+			],
+			"inventory": [
 				{
-					"name":"sword",
-					"desc":"iron sword."
+					"name": "sword",
+					"desc": "iron sword."
 				},
 				{
-					"name":"stick",
-					"desc":"fallen crippled stick."
+					"name": "stick",
+					"desc": "fallen crippled stick."
 				}
-			]
-		},
-		{
-			"name":"Water World",
-			"desc":"bit of a swampy world.",
-			"connections":
-			[
+			],
+			"sublocations": [
 				{
-					"direction":"up",
-					"name":"River Camp"
-				}
-			],	
-			"inventory":
-			[
-				{
-					"name":"rabbit",
-					"desc":"rare red eyed rabbit."
+					"name": "Rock Dungeon",
+					"desc": "A dark, mysterious dungeon carved into the mountain.",
+					"inventory": [
+						{
+							"name": "Chest",
+							"desc": "An old wooden chest. Wonder what's inside?"
+						}
+					]
 				},
 				{
-					"name":"burnt stick",
-					"desc":"burnt recently."
-				}
-			]
-		},
-		{
-			"name":"Box World",
-			"desc":"a boxy world.",
-			"connections":
-			[
-				{
-					"direction":"west",
-					"name":"dark forest"
-				}
-			],	
-			"inventory":
-			[
-				{
-					"name":"mushrooms",
-					"desc":"trippy mushrooms."
+					"name": "Water World",
+					"desc": "bit of a swampy world.",
+					"connections": [
+						{
+							"direction": "up",
+							"name": "River Camp"
+						}
+					],
+					"inventory": [
+						{
+							"name": "rabbit",
+							"desc": "rare red eyed rabbit."
+						},
+						{
+							"name": "burnt stick",
+							"desc": "burnt recently."
+						}
+					]
 				},
 				{
-					"name":"glowstone",
-					"desc":"werid glowy rock."
+					"name": "Box World",
+					"desc": "a boxy world.",
+					"connections": [
+						{
+							"direction": "west",
+							"name": "dark forest"
+						}
+					],
+					"inventory": [
+						{
+							"name": "mushrooms",
+							"desc": "trippy mushrooms."
+						},
+						{
+							"name": "glowstone",
+							"desc": "weird glowy rock."
+						}
+					]
 				}
 			]
 		}

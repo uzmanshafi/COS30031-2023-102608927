@@ -3,6 +3,7 @@
 #include <map>
 #include "json.hpp"
 #include "Inventory.h"
+#include <vector>
 
 using json = nlohmann::json;
 using namespace std;
@@ -12,10 +13,11 @@ class Location
 private:
 	string _name;
 	string _desc;
-
 	map<string, string> _connections;
-
 	Inventory _inventory;
+
+	//creating a sublocation for task 13
+	vector<Location*> _sublocations;
 public:
 	Location(json);
 	~Location();
@@ -34,4 +36,7 @@ public:
 	bool addItem(Item*);
 	bool removeItem(const string&);
 	Item* getItem(const string&);
+
+	//sublocations for  task 13
+	Location* findSublocation(const string& name);
 };

@@ -56,10 +56,31 @@ vector<string> GameWorld::processInput()
 	return splitString(input);
 }
 
+// old moveplayer implementation before task 13
+//void GameWorld::movePlayer()
+//{
+//	_player->setLocation(getLocation(_player->getLocName()));
+//}
+
 void GameWorld::movePlayer()
 {
-	_player->setLocation(getLocation(_player->getLocName()));
+	string currentLocName = _player->getLocName();
+	Location* currentLoc = getLocation(currentLocName);
+	vector<string> inputs = processInput();
+	if (inputs.size() > 2 && inputs[0] == "go" && inputs[1] == "into")
+	{
+		Location* subloc = currentLoc->findSublocation(inputs[2]);
+		if (subloc)
+		{
+			_player->setLocation(subloc);
+		}
+	}
+	else
+	{
+		_player->setLocation(getLocation(currentLocName));
+	}
 }
+
 
 bool GameWorld::running()
 {
@@ -69,7 +90,7 @@ bool GameWorld::running()
 void GameWorld::update()
 {
 	_commandManager->processCommand(processInput());
-	movePlayer();
+	//movePlayer(); double input reading issue
 }
 
 void GameWorld::render()
