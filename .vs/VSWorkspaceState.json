@@ -1,13 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\08 - Spike - Game State Management",
-    "\\22 - Spike - Collisions\\Sprite and Graphics Collision",
-    "\\22 - Spike - Collisions\\Sprite and Graphics Collision\\Sprite and Graphics Task",
-    "\\24 - Spike - Profiling, Performance and Optimsation",
-    "\\24 - Spike - Profiling, Performance and Optimsation\\24 Performance",
-    "\\24 - Spike - Profiling, Performance and Optimsation\\24 Performance\\24 Performance"
+    "\\19 - Spike - Messaging_ Annoucements and Blackboards",
+    "\\24 - Spike - Profiling, Performance and Optimsation"
   ],
-  "SelectedNode": "\\24 - Spike - Profiling, Performance and Optimsation\\24 Performance\\24 Performance\\24 Performance.cpp",
+  "SelectedNode": "\\24 - Spike - Profiling, Performance and Optimsation\\24 Performance",
   "PreviewInSolutionExplorer": false
 }
