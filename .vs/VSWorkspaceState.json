@@ -1,11 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\13 - Spike - Composite and Component Patterns",
+    "\\03 - Spike - Gridworld",
+    "\\04 - Spike - Gridworld Multi-threaded",
     "\\13 - Spike - Composite and Component Patterns\\zorkish",
     "\\19 - Spike - Messaging_ Annoucements and Blackboards",
     "\\24 - Spike - Profiling, Performance and Optimsation"
   ],
-  "SelectedNode": "\\13 - Spike - Composite and Component Patterns\\zorkish\\world1.json",
+  "SelectedNode": "\\04 - Spike - Gridworld Multi-threaded\\main.exe",
   "PreviewInSolutionExplorer": false
 }
